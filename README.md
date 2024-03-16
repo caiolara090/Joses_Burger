@@ -13,7 +13,7 @@ Com esse trabalho, nosso grupo pretende criar um aplicativo para celulares de um
 As principais funções do sistema são:
 
 - Criar uma conta para os usuários
-- Escolher um lanche dentre vários no cardápio
+- Escolher um lanche do cardápio e adicionar ao carrinho
 - Comprar/pagar pelos produtos no carrinho
 - Avaliar o restaurante
 
