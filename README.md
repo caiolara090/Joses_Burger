@@ -3,9 +3,9 @@
 Trabalho referente à disciplina Prática em Desenvolvimento de Software da UFMG.
 
 # Membros e Papéis:
-- Caio Lara (Front-end)
+- Caio Lara (Fullstack)
 - José Eduardo Massucato (Fullstack)
-- Thales Augusto (Front-end)
+- Thales Augusto (Fullstack)
 
 # Escopo:
 
