@@ -1,0 +1,19 @@
+# Arquivos e diretórios específicos do Flutter
+android/
+ios/
+build/
+*.iml
+*.lock
+*.apk
+*.ap_
+
+# Arquivos de configuração do Flutter
+.dart_tool/
+.idea/
+.vscode/
+
+# Dependências geradas pelo Flutter
+.pub/
+packages/
+.flutter-plugins
+.flutter-plugins-dependencies
