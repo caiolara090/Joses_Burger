@@ -6,12 +6,13 @@ const bcrypt = require('bcrypt');
 const app = express();
 
 // Conectar ao banco de dados MongoDB
-mongoose.connect('mongodb://localhost:27017', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/dados', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Definir o schema do usuário
 const userSchema = new mongoose.Schema({
   nome: String,
   email: String,
+  idade: Number,
   senha: String
 });
 
@@ -58,10 +59,6 @@ app.post('/verificarUsuario', async (req, res) => {
 
 // Iniciar o servidor para inserir usuários
 app.listen(3000, () => {
-  console.log('Servidor para inserir usuários rodando na porta 3000');
-});
-
-// Iniciar o servidor para verificar usuários
-app.listen(3001, () => {
-  console.log('Servidor para verificar usuários rodando na porta 3001');
+  console.log('Servidor para inserir usuários rodando na porta 3000/inserirUsuario');
+  console.log('Servidor para inserir usuários rodando na porta 3000/verificarUsuario');
 });

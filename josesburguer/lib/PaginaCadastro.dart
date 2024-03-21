@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class RegistrationScreen extends StatefulWidget {
@@ -147,31 +148,36 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
-  void _register() {
+  Future<void> _register() async {
     if (_formKey.currentState!.validate()) {
       final String name = _nameController.text.trim();
       final String email = _emailController.text.trim();
       final String password = _passwordController.text.trim();
 
-      // Criando um mapa com os dados do formulário
-      final Map<String, dynamic> formData = {
-        'name': name,
-        'email': email,
-        'password': password,
-      };
-
-      // Convertendo o mapa em uma string JSON
-      final String jsonData = jsonEncode(formData);
-
-      // Aqui você pode fazer o que quiser com o JSON gerado
-      print(jsonData);
-
-      // Lógica adicional de registro, como enviar para um servidor, etc.
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Registro bem-sucedido para $name!'),
-        ),
+      final url = Uri.parse('http://localhost:3000/inserirUsuario');
+      final response = await http.post(
+        url,
+        body: jsonEncode({
+          'nome': name,
+          'email': email,
+          'senha': password,
+        }),
+        headers: {'Content-Type': 'application/json'},
       );
+
+      if (response.statusCode == 201) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Usuário $name cadastrado com sucesso!'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro ao cadastrar usuário'),
+          ),
+        );
+      }
     }
   }
 }
