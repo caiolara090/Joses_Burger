@@ -43,10 +43,10 @@ app.use(express.json());
 
 // Rota para inserir um novo usuário
 app.post('/inserirUsuario', async (req, res) => {
-  const { nome, email, idade, senha } = req.body;
+  const { nome, email, idade, senha, rua, bairro, numero, complemento, ponto_ref } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(senha, 10);
-    const novoUsuario = new User({ nome, email, idade, senha: hashedPassword });
+    const novoUsuario = new User({ nome, email, idade, senha: hashedPassword, rua, bairro, numero, complemento, ponto_ref });
     await novoUsuario.save();
     res.status(201).send('Usuário inserido com sucesso!');
   } catch (error) {
