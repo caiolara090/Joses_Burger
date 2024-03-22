@@ -13,8 +13,27 @@ const userSchema = new mongoose.Schema({
   nome: String,
   email: String,
   idade: Number,
-  senha: String
+  senha: String,
+  rua: String,
+  bairro: String,
+  numero: Number,
+  complemento: String,
+  ponto_ref: String,
 });
+
+const AvaliacaoSchema = new mongoose.Schema({
+  nome: String,
+  texto: String,
+  nota: Number,
+  // Criando uma data específica (ano, mês, dia)
+  data: Date,
+});
+
+
+// Obtendo o dia, mês e ano da data atual
+// let dia = dataAtual.getDate();
+// let mes = dataAtual.getMonth() + 1; // Lembrando que os meses são indexados de 0 a 11
+// let ano = dataAtual.getFullYear();
 
 // Definir o modelo do usuário
 const User = mongoose.model('User', userSchema);

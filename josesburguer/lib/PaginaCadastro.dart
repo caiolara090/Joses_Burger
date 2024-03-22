@@ -24,9 +24,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         centerTitle: true,
         title: const Text(
           'Cadastro',
-          style: TextStyle(fontSize: 40.0),
+          style: TextStyle(fontSize: 28.0, color: Colors.white)
         ),
-        backgroundColor: Colors.cyan.shade400,
+        backgroundColor: Color.fromARGB(255, 255, 0, 0).withOpacity(0.8),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -35,11 +35,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.cyan.shade400, Colors.blue.shade900],
+            colors: [
+                 Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 222, 222, 222)
+                ],
           ),
         ),
         padding: const EdgeInsets.all(30.0),
@@ -99,11 +101,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ElevatedButton(
                 onPressed: _register,
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 255, 0, 0),
                   padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50),
                 ),
                 child: const Text(
                   'Registrar',
-                  style: TextStyle(fontSize: 20.0, color: Colors.black),
+                  style: TextStyle(fontSize: 20.0, color: Color.fromARGB(255, 255, 255, 255)),
                 ),
               ),
             ],
@@ -124,15 +127,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        prefixIcon: icon != null ? Icon(icon) : null,
+        prefixIcon: icon != null ? Icon(icon, color: Color.fromARGB(255, 255, 255, 255)) : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
         filled: true,
-        fillColor: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.7),
+        fillColor: const Color.fromARGB(255, 255, 120, 120).withOpacity(0.7),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: const BorderSide(color: Colors.blue, width: 2.0),
+          borderSide: const BorderSide(color: Colors.black, width: 2.0),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),

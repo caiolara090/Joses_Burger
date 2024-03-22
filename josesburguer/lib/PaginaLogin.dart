@@ -23,9 +23,9 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: true,
         title: const Text(
           'Jose\'s Burguer',
-          style: TextStyle(fontSize: 28.0, color: Colors.white),
+          style: TextStyle(fontSize: 28.0, color: Color.fromARGB(255, 255, 255, 255)),
         ),
-        backgroundColor: Colors.brown.shade800,
+        backgroundColor: Color.fromARGB(255, 255, 0, 0),
       ),
       body: Stack(
         children: [
@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Color.fromARGB(255, 252, 63, 63), Color.fromARGB(255, 162, 72, 2)],
+                colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 222, 222, 222)],
               ),
             ),
             padding: const EdgeInsets.all(30.0),
@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50),
-                      backgroundColor: Colors.black, // Cor do botão
+                      backgroundColor: const Color.fromARGB(255, 255, 0, 0), // Cor do botão
                       elevation: 5, // Elevação para criar um efeito de brilho
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),
@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: const Text(
                       'Não tem uma conta? Registre-se',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Color.fromARGB(255, 2, 0, 125)),
                     ),
                   ),
                 ],
@@ -128,19 +128,19 @@ class _LoginScreenState extends State<LoginScreen> {
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        prefixIcon: icon != null ? Icon(icon, color: Colors.white) : null,
+        prefixIcon: icon != null ? Icon(icon, color: Color.fromARGB(255, 255, 255, 255)) : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
         filled: true,
-        fillColor: Colors.white.withOpacity(0.7), // Define a cor clara para o fundo
+        fillColor: Color.fromARGB(255, 255, 120, 120).withOpacity(0.7), // Define a cor clara para o fundo
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: const BorderSide(color: Colors.white, width: 2.0),
+          borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0), width: 2.0),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: const BorderSide(color: Colors.red, width: 2.0),
+          borderSide: const BorderSide(color: Color.fromARGB(255, 248, 68, 55), width: 2.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
@@ -175,19 +175,19 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       } else if (response.statusCode == 401) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Senha incorreta!'),
           ),
         );
       }else if (response.statusCode == 404) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Usuário não identificado!'),
           ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Erro ao fazer login!'),
           ),
         );

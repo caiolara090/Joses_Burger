@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '/PaginaLogin.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: LoginScreen(),
   ));
