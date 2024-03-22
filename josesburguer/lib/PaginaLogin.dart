@@ -25,12 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
           'Jose\'s Burguer',
           style: TextStyle(fontSize: 28.0, color: Color.fromARGB(255, 255, 255, 255)),
         ),
-        backgroundColor: Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
       ),
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -101,17 +101,20 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          Positioned(
-            top: 40.0, // Ajuste a posição vertical da imagem
-            left: 0,
-            right: 0,
-            child: Center(
-              child: CircleAvatar(
-                radius: 80, // Ajuste o tamanho da imagem
-                child: Image.asset("assets/1.png", height: 200),
-              ),
-            ),
+         Positioned(
+      bottom: 40.0, // Ajuste a posição vertical da imagem
+      left: 0,
+      right: 0,
+      child: Center(
+        child: Container(
+          height: MediaQuery.of(context).size.height * 1.4, // Ajuste a altura da imagem conforme necessário
+          child: CircleAvatar(
+            radius: 80, // Ajuste o tamanho da imagem
+            child: Image.asset("assets/1.png", height: 200),
           ),
+        ),
+      ),
+    ),
         ],
       ),
     );
@@ -128,12 +131,12 @@ class _LoginScreenState extends State<LoginScreen> {
       controller: controller,
       decoration: InputDecoration(
         labelText: labelText,
-        prefixIcon: icon != null ? Icon(icon, color: Color.fromARGB(255, 255, 255, 255)) : null,
+        prefixIcon: icon != null ? Icon(icon, color: const Color.fromARGB(255, 255, 255, 255)) : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
         filled: true,
-        fillColor: Color.fromARGB(255, 255, 120, 120).withOpacity(0.7), // Define a cor clara para o fundo
+        fillColor: const Color.fromARGB(255, 255, 120, 120).withOpacity(0.7), // Define a cor clara para o fundo
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: const BorderSide(color: Color.fromARGB(255, 0, 0, 0), width: 2.0),
@@ -157,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final String email = _emailController.text.trim();
       final String password = _passwordController.text.trim();
 
-      final url = Uri.parse('http://localhost:3000/verificarUsuario');
+      final url = Uri.parse('http://10.0.2.2:3000/verificarUsuario');
       final response = await http.post(
         url,
         body: jsonEncode({
