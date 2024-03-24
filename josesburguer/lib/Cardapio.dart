@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teste3/DetalhesProduto.dart';
+import 'package:josesburguer/DetalhesProduto.dart';
 
 class PaginaCardapio extends StatefulWidget {
   @override
