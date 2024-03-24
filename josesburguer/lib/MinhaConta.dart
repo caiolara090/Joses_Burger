@@ -23,6 +23,31 @@ class _PaginaDadosState extends State<PaginaDados> {
           ),
         ),
       ),
+	body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+	child: Padding(
+  padding: EdgeInsets.symmetric(horizontal: 16),
+  child: ElevatedButton(
+    onPressed: () {
+      
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color.fromARGB(255, 255, 0, 0), 
+      padding: const EdgeInsets.symmetric(
+        vertical: 10.0,
+        horizontal: 50,
+      ),
+    ),
+    child: const Text(
+      'Editar Dados',
+      style: TextStyle(
+        fontSize: 17.0,
+        color: Colors.white, 
+      ),
+    ),
+  ),
+),
+),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color.fromARGB(255, 255, 0, 0),
         selectedItemColor: Color.fromARGB(255, 0, 0, 0),
