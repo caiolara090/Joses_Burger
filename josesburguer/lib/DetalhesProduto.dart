@@ -55,7 +55,7 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
         ),
         backgroundColor: const Color.fromARGB(255, 255, 0, 0),
       ),
-	body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -75,11 +75,64 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
                   ],
                 ),
               ),
-	],
-	),
+            SizedBox(height: 16),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Text(
+                widget.produto.descricao,
+                textAlign: TextAlign.justify,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ), 
+              ),
+            ),
+            SizedBox(height: 26),
+            Padding(
+  padding: EdgeInsets.symmetric(horizontal: 16),
+  child: Center(
+    child: Text(
+      'R\$ ${widget.produto.preco.toStringAsFixed(2)}',
+      textAlign: TextAlign.justify,
+      style: TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
+      ), 
+    ),
+  ),
 ),
 
-        bottomNavigationBar: BottomNavigationBar(
+            SizedBox(height: 16),
+            Padding(
+  padding: EdgeInsets.symmetric(horizontal: 16),
+  child: ElevatedButton(
+    onPressed: () {
+      
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+      padding: const EdgeInsets.symmetric(
+        vertical: 10.0,
+        horizontal: 50,
+      ),
+    ),
+    child: const Text(
+      'Adicionar',
+      style: TextStyle(
+        fontSize: 17.0,
+        color: Colors.white, 
+      ),
+    ),
+  ),
+),
+
+
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color.fromARGB(255, 255, 0, 0),
         selectedItemColor: Color.fromARGB(255, 0, 0, 0),
         currentIndex: _currentIndex,

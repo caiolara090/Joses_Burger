@@ -83,7 +83,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60), // Defina a altura do AppBar
+        preferredSize: Size.fromHeight(60), 
         child: AppBar(
           backgroundColor: const Color.fromARGB(255, 255, 0, 0),
           title: Row(
@@ -96,12 +96,12 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                ), // Centraliza o texto à esquerda
+                ), 
               ),
               Image.asset(
-                'assets/1.png', // Certifique-se de que o caminho da imagem está correto
-                width: 70, // Defina a largura da imagem conforme necessário
-                height: 75, // Defina a altura da imagem conforme necessário
+                'assets/1.png', 
+                width: 70, 
+                height: 75, 
               ),
               Text(
                 'Burguer   ',
@@ -110,7 +110,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                ), // Centraliza o texto à direita
+                ), 
               ),
             ],
           ),
@@ -130,14 +130,14 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
             SizedBox(height: 5),
             Padding(
               padding: EdgeInsets.only(
-                  right: 10), // Adicione um espaçamento à direita
+                  right: 10), 
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: 10), // Ajuste o padding horizontal
+                          horizontal: 10), 
                       child: TextField(
                         controller: _searchController,
                         onChanged: (value) {
@@ -153,7 +153,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 5,
                               horizontal:
-                                  10), // Ajuste o padding vertical e horizontal
+                                  10), 
                           hintText: 'Pesquisar...',
                           border: OutlineInputBorder(),
                         ),
@@ -163,11 +163,11 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                   IconButton(
                     icon: Icon(
                       Icons.star,
-                      color: Colors.yellow, // Define a cor amarela
-                      size: 35, // Ajuste o tamanho do ícone
+                      color: Colors.yellow, 
+                      size: 35, 
                     ),
                     onPressed: () {
-                      // Implemente a ação do botão de estrela aqui
+                      
                     },
                   ),
                 ],
@@ -208,13 +208,13 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                                 ),
                                 subtitle: Text(
                                   _filteredProdutos[index].descricao.length >
-                                          50 // Verifica se a descrição é maior que 50 caracteres
+                                          50 
                                       ? _filteredProdutos[index]
                                               .descricao
                                               .substring(0, 50) +
-                                          '...' // Se sim, limita a 50 caracteres e adiciona reticências
+                                          '...' 
                                       : _filteredProdutos[index]
-                                          .descricao, // Se não, exibe a descrição completa
+                                          .descricao, 
                                   style: TextStyle(color: Colors.black),
                                 ),
                                 trailing: Row(
