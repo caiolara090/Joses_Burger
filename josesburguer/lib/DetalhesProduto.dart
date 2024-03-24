@@ -55,7 +55,31 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
         ),
         backgroundColor: const Color.fromARGB(255, 255, 0, 0),
       ),
-	        bottomNavigationBar: BottomNavigationBar(
+	body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (widget.produto != null)
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Image.asset(
+                        'assets/image_0.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                  ],
+                ),
+              ),
+	],
+	),
+),
+
+        bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color.fromARGB(255, 255, 0, 0),
         selectedItemColor: Color.fromARGB(255, 0, 0, 0),
         currentIndex: _currentIndex,
