@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste3/DetalhesProduto.dart';
 
 class PaginaCardapio extends StatefulWidget {
   @override
@@ -8,11 +9,81 @@ class PaginaCardapio extends StatefulWidget {
 class _PaginaCardapioState extends State<PaginaCardapio> {
   int _currentIndex = 0;
 
+  List<Produto> produtos = [
+    Produto(
+      nome: "Sanduíche de Frango Grelhado",
+      descricao:
+          "Frango grelhado com alface, tomate e maionese em um pão integral.",
+      preco: 12.99,
+    ),
+    Produto(
+      nome: "Sanduíche Vegetariano",
+      descricao: "Pepino, cenoura, alface, tomate e queijo em um pão de grãos.",
+      preco: 9.99,
+    ),
+    Produto(
+      nome: "Hambúrguer Clássico",
+      descricao:
+          "Hambúrguer de carne, queijo, alface, tomate e molho especial em um pão de hambúrguer.",
+      preco: 8.49,
+    ),
+    Produto(
+      nome: "Wrap de Salada Caesar",
+      descricao:
+          "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
+      preco: 10.99,
+    ),
+    Produto(
+      nome: "Sanduíche de Atum",
+      descricao:
+          "Atum, alface, cebola, picles e maionese em um pão de centeio.",
+      preco: 11.49,
+    ),
+    Produto(
+      nome: "Sanduíche de Frango Grelhado",
+      descricao:
+          "Frango grelhado com alface, tomate e maionese em um pão integral.",
+      preco: 12.99,
+    ),
+    Produto(
+      nome: "Sanduíche Vegetariano",
+      descricao: "Pepino, cenoura, alface, tomate e queijo em um pão de grãos.",
+      preco: 9.99,
+    ),
+    Produto(
+      nome: "Hambúrguer Clássico",
+      descricao:
+          "Hambúrguer de carne, queijo, alface, tomate e molho especial em um pão de hambúrguer.",
+      preco: 8.49,
+    ),
+    Produto(
+      nome: "Wrap de Salada Caesar",
+      descricao:
+          "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
+      preco: 10.99,
+    ),
+    Produto(
+      nome: "Sanduíche de Atum",
+      descricao:
+          "Atum, alface, cebola, picles e maionese em um pão de centeio.",
+      preco: 11.49,
+    ),
+  ];
+
+  TextEditingController _searchController = TextEditingController();
+  List<Produto> _filteredProdutos = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _filteredProdutos = List.from(produtos);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60), // Defina a altura do AppBar
+        preferredSize: Size.fromHeight(60),
         child: AppBar(
           backgroundColor: const Color.fromARGB(255, 255, 0, 0),
           title: Row(
@@ -25,12 +96,12 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                ), // Centraliza o texto à esquerda
+                ), 
               ),
               Image.asset(
-                'assets/1.png', // Certifique-se de que o caminho da imagem está correto
-                width: 70, // Defina a largura da imagem conforme necessário
-                height: 75, // Defina a altura da imagem conforme necessário
+                'assets/1.png', 
+                width: 70, 
+                height: 75, 
               ),
               Text(
                 'Burguer   ',
@@ -39,7 +110,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                ), // Centraliza o texto à direita
+                ), 
               ),
             ],
           ),
