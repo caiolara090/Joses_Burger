@@ -29,7 +29,6 @@ const AvaliacaoSchema = new mongoose.Schema({
   data: Date,
 });
 
-
 // Obtendo o dia, mês e ano da data atual
 // let dia = dataAtual.getDate();
 // let mes = dataAtual.getMonth() + 1; // Lembrando que os meses são indexados de 0 a 11
@@ -45,6 +44,13 @@ app.use(express.json());
 app.post('/inserirUsuario', async (req, res) => {
   const { nome, email, idade, senha, rua, bairro, numero, complemento, ponto_ref } = req.body;
   try {
+    // Verificar se o e-mail já está cadastrado
+    const usuarioExistente = await User.findOne({ email });
+    if (usuarioExistente) {
+      return res.status(400).send('Este e-mail já está cadastrado');
+    }
+
+    // Se o e-mail não estiver cadastrado, continuar com a inserção do novo usuário
     const hashedPassword = await bcrypt.hash(senha, 10);
     const novoUsuario = new User({ nome, email, idade, senha: hashedPassword, rua, bairro, numero, complemento, ponto_ref });
     await novoUsuario.save();

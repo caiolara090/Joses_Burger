@@ -40,6 +40,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  qr_flutter: ^4.1.0
+  qr_code_scanner: 
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -62,6 +65,7 @@ flutter:
   assets:
     - assets/1.png
     - assets/hamburger.png
+    - assets/fritas_1.png
     - assets/image_1.png
     - assets/image_2.png
     - assets/image_3.png
