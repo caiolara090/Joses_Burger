@@ -16,10 +16,24 @@ class Avaliacao {
   });
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+class AvaliacaoPage extends StatelessWidget {
+  AvaliacaoPage({Key? key}) : super(key: key);
 
   final List<Avaliacao> avaliacoes = [
+    Avaliacao(
+      nome: 'João',
+      usuario: '@joao123',
+      nota: 5,
+      comentario: 'Excelente produto!',
+      data: DateTime.now(),
+    ),
+    Avaliacao(
+      nome: 'João',
+      usuario: '@joao123',
+      nota: 5,
+      comentario: 'Excelente produto!',
+      data: DateTime.now(),
+    ),
     Avaliacao(
       nome: 'João',
       usuario: '@joao123',
@@ -50,7 +64,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
-          title: Text(
+          title: const Text(
             'Avaliações',
             style: TextStyle(color: Colors.white),
           ),
@@ -60,8 +74,8 @@ class MyApp extends StatelessWidget {
           children: [
             Container(
               color: Colors.red,
-              padding: EdgeInsets.all(16.0),
-              child: Row(
+              padding: const EdgeInsets.all(16.0),
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -85,8 +99,8 @@ class MyApp extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final avaliacao = avaliacoes[index];
                   return Container(
-                    margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                    padding: EdgeInsets.all(16.0),
+                    margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    padding: const EdgeInsets.all(16.0),
                     decoration: BoxDecoration(
                       color: Colors.grey[200],
                       borderRadius: BorderRadius.circular(16.0),
@@ -98,7 +112,7 @@ class MyApp extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Container(
-                                padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                                 decoration: BoxDecoration(
                                   color: Colors.red, // Define a cor de fundo como vermelho
                                   borderRadius: BorderRadius.circular(8.0), // Define bordas arredondadas
@@ -108,15 +122,15 @@ class MyApp extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${avaliacao.nome} ',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
                                     ),
-                                    SizedBox(height: 4.0),
+                                    const SizedBox(height: 4.0),
                                     Text(
                                       '${avaliacao.usuario}',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontStyle: FontStyle.italic,
                                         color: Colors.white,
                                       ),
@@ -125,34 +139,34 @@ class MyApp extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 8.0),
+                            const SizedBox(width: 8.0),
                           ],
                         ),
-                        SizedBox(height: 8.0),
+                        const SizedBox(height: 8.0),
                         Row(
                           children: List.generate(5, (index) {
                             if (index < avaliacao.nota) {
-                              return Icon(
+                              return const Icon(
                                 Icons.star,
                                 color: Colors.yellow,
                               );
                             } else {
-                              return Icon(
+                              return const Icon(
                                 Icons.star_border,
                                 color: Colors.grey,
                               );
                             }
                           }),
                         ),
-                        SizedBox(height: 8.0),
+                        const SizedBox(height: 8.0),
                         Text(
                           '${avaliacao.comentario}',
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                         ),
-                        SizedBox(height: 8.0),
+                        const SizedBox(height: 8.0),
                         Text(
                           '${avaliacao.data.day}/${avaliacao.data.month}/${avaliacao.data.year}',
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                         ),
                       ],
                     ),
@@ -166,3 +180,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// void main() {
+//   runApp(AvaliacaoPage(
+//   ));
+// }

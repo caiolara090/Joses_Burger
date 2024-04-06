@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '/PaginaCadastro.dart';
+import '/Cardapio.dart';
 import 'dart:convert';
 
 class LoginScreen extends StatefulWidget {
@@ -176,6 +177,10 @@ class _LoginScreenState extends State<LoginScreen> {
             content: Text('Login bem-sucedido para $email!'),
           ),
         );
+        Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PaginaCardapio()),
+                      );
       } else if (response.statusCode == 401) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(

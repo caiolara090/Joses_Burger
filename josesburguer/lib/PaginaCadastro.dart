@@ -112,7 +112,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             const SizedBox(height: 20),
             ListTile(
-              title: Text(
+              title: const Text(
                 'Endereço',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
@@ -231,46 +231,53 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 }
 
 
-  Future<void> _register() async {
-    if (_formKey.currentState!.validate()) {
-      final String name = _nameController.text.trim();
-      final String email = _emailController.text.trim();
-      final String password = _passwordController.text.trim();
-      final String rua = _streetController.text.trim();
-      final String bairro = _neighborhoodController.text.trim();
-      final String numero = _numberController.text.trim();
-      final String complemento = _complementController.text.trim();
-      final String pontoref = _referencePointController.text.trim();
+ Future<void> _register() async {
+  if (_formKey.currentState!.validate()) {
+    final String name = _nameController.text.trim();
+    final String email = _emailController.text.trim();
+    final String password = _passwordController.text.trim();
+    final String rua = _streetController.text.trim();
+    final String bairro = _neighborhoodController.text.trim();
+    final String numero = _numberController.text.trim();
+    final String complemento = _complementController.text.trim();
+    final String pontoref = _referencePointController.text.trim();
 
-      final url = Uri.parse('http://10.0.2.2:3000/inserirUsuario');
-      final response = await http.post(
-        url,
-        body: jsonEncode({
-          'nome': name,
-          'email': email,
-          'senha': password,
-          'rua': rua,
-          'bairro': bairro,
-          'numero': numero,
-          'complemento': complemento,
-          'ponto_ref': pontoref,
-        }),
-        headers: {'Content-Type': 'application/json'},
+    final url = Uri.parse('http://10.0.2.2:3000/inserirUsuario');
+    final response = await http.post(
+      url,
+      body: jsonEncode({
+        'nome': name,
+        'email': email,
+        'senha': password,
+        'rua': rua,
+        'bairro': bairro,
+        'numero': numero,
+        'complemento': complemento,
+        'ponto_ref': pontoref,
+      }),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 201) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Usuário $name cadastrado com sucesso!'),
+        ),
       );
-
-      if (response.statusCode == 201) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Usuário $name cadastrado com sucesso!'),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Erro ao cadastrar usuário'),
-          ),
-        );
-      }
+    } else if (response.statusCode == 400) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Erro: Este e-mail já está cadastrado'),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Erro ao cadastrar usuário'),
+        ),
+      );
     }
   }
 }
+}
+

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:josesburguer/Cardapio.dart';
+import 'package:josesburguer/Produtos.dart';
 
 class PaginaDados extends StatefulWidget {
   @override
@@ -275,15 +277,25 @@ class _PaginaDadosState extends State<PaginaDados> {
           switch (index) {
             case 0:
               //Navegue para alguma página
-              Navigator.pushReplacementNamed(context, '/cardapio');
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PaginaCardapio()),
+                      );
               break;
             case 1:
               //Navegue para alguma página
               //Navigator.pushReplacementNamed(context, '/pagina2');
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CarrinhoPage()),
+                      );
               break;
             case 2:
               //Navegue para alguma página
-              Navigator.pushNamed(context, '/dados');
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PaginaDados()),
+                      );
               break;
           }
         },

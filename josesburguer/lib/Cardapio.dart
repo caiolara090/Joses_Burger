@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:josesburguer/Avaliacoes.dart';
+import 'package:josesburguer/Produtos.dart';
 import 'package:josesburguer/DetalhesProduto.dart';
+import 'package:josesburguer/MinhaConta.dart';
+import 'package:josesburguer/Avaliacoes.dart';
 
 class PaginaCardapio extends StatefulWidget {
   @override
@@ -167,7 +171,10 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                       size: 35, 
                     ),
                     onPressed: () {
-                      
+                       Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AvaliacaoPage()),
+                      );
                     },
                   ),
                 ],
@@ -281,10 +288,17 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
             case 1:
               //Navegue para alguma página
               //Navigator.pushReplacementNamed(context, '/pagina2');
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => CarrinhoPage()),
+                      );
               break;
             case 2:
               //Navegue para alguma página
-              Navigator.pushReplacementNamed(context, '/dados');
+            Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PaginaDados()),
+                      );
               break;
           }
         },
