@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:josesburguer/Cardapio.dart';
+import 'package:josesburguer/MinhaConta.dart';
 import '/Pagamento.dart';
 
 class Pedido {
@@ -36,6 +38,9 @@ class CarrinhoPage extends StatefulWidget {
 }
 
 class _CarrinhoPageState extends State<CarrinhoPage> {
+
+  int _currentIndex = 0;
+
   List<Pedido> pedidos = [
     Pedido(
       nome: 'Sanduíche',
@@ -94,7 +99,7 @@ Widget build(BuildContext context) {
             children: [
               Text(
                 '${pedido.nome} (${pedido.quantidade}x)',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                 ),
               ),
@@ -102,7 +107,7 @@ Widget build(BuildContext context) {
                 mainAxisSize: MainAxisSize.min, // Ajusta ao conteúdo
                 children: [
                   IconButton(
-                    icon: Icon(Icons.remove),
+                    icon: const Icon(Icons.remove),
                     onPressed: () {
                       setState(() {
                         pedido.removerPedido();
@@ -112,7 +117,7 @@ Widget build(BuildContext context) {
                     splashColor: Colors.grey.withOpacity(0.5), // Cor do splash
                   ),
                   IconButton(
-                    icon: Icon(Icons.add),
+                    icon: const Icon(Icons.add),
                     onPressed: () {
                       setState(() {
                         pedido.adicionarPedido();
@@ -122,7 +127,7 @@ Widget build(BuildContext context) {
                     splashColor: Colors.grey.withOpacity(0.5), // Cor do splash
                   ),
                   IconButton(
-                    icon: Icon(Icons.delete),
+                    icon: const Icon(Icons.delete),
                     onPressed: () {
                       setState(() {
                         pedidos.removeAt(index);
@@ -144,50 +149,56 @@ Widget build(BuildContext context) {
     );
   },
 ),
-
-    bottomNavigationBar: Container(
-      width: double.infinity,
-      height: 50,
-      color: Colors.red,
-      child: Center(
-        child: Text(
-          'Total: R\$${calcularTotal().toStringAsFixed(2)}',
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    ),
-    floatingActionButton: FloatingActionButton.extended(
-  onPressed: () {
-     Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => PagamentoPage(total: calcularTotal())),
-    );
-  },
-  label: const Text(
-    'Pagar',
-    style: TextStyle(
-      color: Colors.white,
-      fontSize: 18,
-      fontWeight: FontWeight.bold,
-    ),
-  ),
-  backgroundColor: Colors.red,
-  icon: const Icon(Icons.payment),
-  splashColor: Colors.red.withOpacity(0.5), // Cor do splash
-),
-
     floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+        selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
+        currentIndex: _currentIndex,
+        unselectedItemColor: Colors.white,
+        items: [
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.fastfood),
+            label: 'Cardápio',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Carrinho',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Dados',
+          ),
+        ],
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              //Navegue para alguma página
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PaginaCardapio()),
+                      );
+              break;
+            case 1:
+              //Navegue para alguma página
+              //Navigator.pushReplacementNamed(context, '/pagina2');
+              break;
+            case 2:
+              //Navegue para alguma página
+              Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PaginaDados()),
+                      );
+              break;
+          }
+        },
+      ),
   );
 }
 }
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: CarrinhoPage(),
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     debugShowCheckedModeBanner: false,
+//     home: CarrinhoPage(),
+//   ));
+// }

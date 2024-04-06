@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:josesburguer/MinhaConta.dart';
+import '/Cardapio.dart';
 
 class Produto {
   String nome;
@@ -132,42 +134,48 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
-        selectedItemColor: Color.fromARGB(255, 0, 0, 0),
-        currentIndex: _currentIndex,
-        unselectedItemColor: Colors.white,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.fastfood),
-            label: 'Cardápio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Carrinho',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Dados',
-          ),
-        ],
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              //Navegue para alguma página
-              Navigator.pushReplacementNamed(context, '/cardapio');
-              break;
-            case 1:
-              //Navegue para alguma página
-              //Navigator.pushReplacementNamed(context, '/pagina2');
-              break;
-            case 2:
-              //Navegue para alguma página
-              Navigator.pushNamed(context, '/dados');
-              break;
-          }
-        },
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+      //   selectedItemColor: Color.fromARGB(255, 0, 0, 0),
+      //   currentIndex: _currentIndex,
+      //   unselectedItemColor: Colors.white,
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.fastfood),
+      //       label: 'Cardápio',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.shopping_cart),
+      //       label: 'Carrinho',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.person),
+      //       label: 'Dados',
+      //     ),
+      //   ],
+      //   onTap: (index) {
+      //     switch (index) {
+      //       case 0:
+      //         //Navegue para alguma página
+      //         Navigator.push(
+      //                   context,
+      //                   MaterialPageRoute(builder: (context) => PaginaCardapio()),
+      //                 );
+      //         break;
+      //       case 1:
+      //         //Navegue para alguma página
+      //         //Navigator.pushReplacementNamed(context, '/pagina2');
+      //         break;
+      //       case 2:
+      //         //Navegue para alguma página
+      //         Navigator.push(
+      //                   context,
+      //                   MaterialPageRoute(builder: (context) => PaginaDados()),
+      //                 );
+      //         break;
+      //     }
+      //   },
+      // ),
     );
   }
 }

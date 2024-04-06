@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:josesburguer/Cardapio.dart';
+import 'package:josesburguer/MinhaConta.dart';
 
-class CarrinhoPage extends StatelessWidget {
+class CarrinhoPage extends StatefulWidget {
+  CarrinhoPage({Key? key}) : super(key: key);
+
+  @override
+  _CarrinhoPageState createState() => _CarrinhoPageState();
+}
+
+class _CarrinhoPageState extends State<CarrinhoPage> {
   int _currentIndex = 0;
 
   @override
@@ -15,7 +22,6 @@ class CarrinhoPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(20.0),
         children: [
-          // Lista de produtos comprados
           ListTile(
             leading: const CircleAvatar(
               backgroundImage: AssetImage('assets/hamburger.png'),
@@ -84,29 +90,30 @@ class CarrinhoPage extends StatelessWidget {
           ),
         ],
         onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
           switch (index) {
             case 0:
-              //Navegue para alguma página
-              //Navigator.pushReplacementNamed(context, '/cardapio');
+              // Navegue para alguma página
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PaginaCardapio()),
+              );
               break;
             case 1:
-              //Navegue para alguma página
-              //Navigator.pushReplacementNamed(context, '/pagina2');
+              // Já está na página de carrinho
               break;
             case 2:
-              //Navegue para alguma página
-              //Navigator.pushNamed(context, '/dados');
+              // Navegue para alguma página
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PaginaDados()),
+              );
               break;
           }
         },
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: CarrinhoPage(),
-  ));
 }
