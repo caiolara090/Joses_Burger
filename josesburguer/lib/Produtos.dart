@@ -79,12 +79,6 @@ Widget build(BuildContext context) {
         ),
       ),
       backgroundColor: Colors.red,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
     ),
     body: ListView.builder(
   itemCount: pedidos.length,
@@ -184,19 +178,13 @@ Widget build(BuildContext context) {
           });
           switch (index) {
             case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PaginaCardapio()),
-              );
+              Navigator.pushReplacementNamed(context, '/cardapio');
               break;
             case 1:
               // Você já está na página do carrinho, não precisa fazer nada.
               break;
             case 2:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PaginaDados()),
-              );
+              Navigator.pushReplacementNamed(context, '/dados');
               break;
           }
         },

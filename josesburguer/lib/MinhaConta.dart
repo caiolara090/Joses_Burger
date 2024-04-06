@@ -107,25 +107,16 @@ class _PaginaDadosState extends State<PaginaDados> {
           switch (index) {
             case 0:
               //Navegue para alguma página
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PaginaCardapio()),
-                      );
+              Navigator.pushReplacementNamed(context, '/cardapio');
               break;
             case 1:
               //Navegue para alguma página
               //Navigator.pushReplacementNamed(context, '/pagina2');
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => CarrinhoPage()),
-                      );
+              Navigator.pushReplacementNamed(context, '/carrinho');
               break;
             case 2:
               //Navegue para alguma página
-              Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PaginaDados()),
-                      );
+              Navigator.pushReplacementNamed(context, '/dados');
               break;
           }
         },
