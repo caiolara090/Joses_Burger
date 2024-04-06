@@ -27,24 +27,33 @@ class DetalhesPagina extends StatefulWidget {
 }
 
 class _DetalhesPaginaState extends State<DetalhesPagina> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            Expanded(
+        automaticallyImplyLeading:
+            true, // Mostra automaticamente o botão de voltar
+        flexibleSpace: Padding(
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top +
+                  5.0), // Ajusta o padding superior
+          child: Center(
+            child: Container(
+              alignment: Alignment.center,
               child: Text(
-                widget.produto.nome,
-                overflow: TextOverflow.ellipsis,
+                "Detalhes",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
-            
-          ],
+          ),
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -75,50 +84,45 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
-                ), 
+                ),
               ),
             ),
             SizedBox(height: 26),
             Padding(
-  padding: EdgeInsets.symmetric(horizontal: 16),
-  child: Center(
-    child: Text(
-      'R\$ ${widget.produto.preco.toStringAsFixed(2)}',
-      textAlign: TextAlign.justify,
-      style: TextStyle(
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      ), 
-    ),
-  ),
-),
-
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Center(
+                child: Text(
+                  'R\$ ${widget.produto.preco.toStringAsFixed(2)}',
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
             SizedBox(height: 16),
             Padding(
-  padding: EdgeInsets.symmetric(horizontal: 16),
-  child: ElevatedButton(
-    onPressed: () {
-      
-    },
-    style: ElevatedButton.styleFrom(
-      backgroundColor: const Color.fromARGB(255, 255, 0, 0),
-      padding: const EdgeInsets.symmetric(
-        vertical: 10.0,
-        horizontal: 50,
-      ),
-    ),
-    child: const Text(
-      'Adicionar',
-      style: TextStyle(
-        fontSize: 17.0,
-        color: Colors.white, 
-      ),
-    ),
-  ),
-),
-
-
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 50,
+                  ),
+                ),
+                child: const Text(
+                  'Adicionar',
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
