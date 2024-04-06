@@ -55,77 +55,86 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
       ),
 
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      if (widget.produto != null)
+        Column(
           children: [
-            if (widget.produto != null)
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Image.asset(
-                        'assets/image_0.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(width: 16),
-                  ],
-                ),
-              ),
-            SizedBox(height: 16),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                widget.produto.descricao,
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            SizedBox(height: 26),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Center(
-                child: Text(
-                  'R\$ ${widget.produto.preco.toStringAsFixed(2)}',
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 16),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 255, 0, 0),
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10.0,
-                    horizontal: 50,
-                  ),
-                ),
-                child: const Text(
-                  'Adicionar',
-                  style: TextStyle(
-                    fontSize: 17.0,
-                    color: Colors.white,
-                  ),
-                ),
+            
+            Container(
+              height: MediaQuery.of(context).size.height * 0.5, // Ajusta a altura da imagem
+              child: Image.asset(
+                'assets/image_0.png',
+                fit: BoxFit.cover,
               ),
             ),
           ],
         ),
+        SizedBox(height: 16),
+        Text(
+              widget.produto.nome,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(255, 255, 0, 0),
+              ),
+            ),
+      SizedBox(height: 16),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Text(
+          widget.produto.descricao,
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
       ),
+      SizedBox(height: 26),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Center(
+          child: Text(
+            'R\$ ${widget.produto.preco.toStringAsFixed(2)}',
+            textAlign: TextAlign.justify,
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+      SizedBox(height: 16),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+            padding: const EdgeInsets.symmetric(
+              vertical: 10.0,
+              horizontal: 50,
+            ),
+          ),
+          child: const Text(
+            'Adicionar',
+            style: TextStyle(
+              fontSize: 17.0,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+
+
       // bottomNavigationBar: BottomNavigationBar(
       //   backgroundColor: const Color.fromARGB(255, 255, 0, 0),
       //   selectedItemColor: Color.fromARGB(255, 0, 0, 0),
