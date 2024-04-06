@@ -27,7 +27,7 @@ class PagamentoPage extends StatelessWidget {
             const SizedBox(height: 20),
             Container(
               child: QrImageView(
-                data: '!BIG CHEESE!',
+                data: 'https://random.cat/',
                 version: QrVersions.auto,
                 size: 200.0,
                 ),
