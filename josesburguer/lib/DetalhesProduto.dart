@@ -27,8 +27,6 @@ class DetalhesPagina extends StatefulWidget {
 }
 
 class _DetalhesPaginaState extends State<DetalhesPagina> {
-  bool _isFavorito = false;
-  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +40,7 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            IconButton(
-              icon: Icon(
-                _isFavorito ? Icons.star : Icons.star_border,
-                color: _isFavorito ? Colors.yellow : Colors.white,
-              ),
-              onPressed: () {
-                setState(() {
-                  _isFavorito = !_isFavorito;
-                });
-              },
-            ),
+            
           ],
         ),
         backgroundColor: const Color.fromARGB(255, 255, 0, 0),
