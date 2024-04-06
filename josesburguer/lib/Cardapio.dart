@@ -3,7 +3,6 @@ import 'package:josesburguer/Avaliacoes.dart';
 import 'package:josesburguer/Produtos.dart';
 import 'package:josesburguer/DetalhesProduto.dart';
 import 'package:josesburguer/MinhaConta.dart';
-import 'package:josesburguer/Avaliacoes.dart';
 
 class PaginaCardapio extends StatefulWidget {
   @override

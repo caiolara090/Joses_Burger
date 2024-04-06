@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:josesburguer/Cardapio.dart';
 import 'package:josesburguer/MinhaConta.dart';
@@ -39,7 +41,7 @@ class CarrinhoPage extends StatefulWidget {
 
 class _CarrinhoPageState extends State<CarrinhoPage> {
 
-  int _currentIndex = 0;
+  int _currentIndex = 1;
 
   List<Pedido> pedidos = [
     Pedido(
@@ -140,16 +142,23 @@ Widget build(BuildContext context) {
               ),
             ],
           ),
-          subtitle: Text(
-            'Total: R\$${(pedido.valor * pedido.quantidade).toStringAsFixed(2)}',
-          ),
+          subtitle: Row(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Text(
+      'Total: R\$${(pedido.valor * pedido.quantidade).toStringAsFixed(2)}',
+      style: const TextStyle(
+        fontSize: 18,
+      ),
+    ),
+  ],
+),
         ),
         const Divider(), // Linha divisória entre os pedidos
       ],
     );
   },
 ),
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color.fromARGB(255, 255, 0, 0),
         selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
@@ -170,35 +179,96 @@ Widget build(BuildContext context) {
           ),
         ],
         onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
           switch (index) {
             case 0:
-              //Navegue para alguma página
               Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PaginaCardapio()),
-                      );
+                context,
+                MaterialPageRoute(builder: (context) => PaginaCardapio()),
+              );
               break;
             case 1:
-              //Navegue para alguma página
-              //Navigator.pushReplacementNamed(context, '/pagina2');
+              // Você já está na página do carrinho, não precisa fazer nada.
               break;
             case 2:
-              //Navegue para alguma página
               Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PaginaDados()),
-                      );
+                context,
+                MaterialPageRoute(builder: (context) => PaginaDados()),
+              );
               break;
           }
         },
       ),
-  );
-}
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: SizedBox(
+          width: double.infinity,
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0),
+                        spreadRadius: 0,
+                        blurRadius: 0,
+                        offset: const Offset(0, 2), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          width: 150, // Defina a largura desejada aqui
+                          child: FloatingActionButton.extended(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => PagamentoPage(total: calcularTotal())),
+                              );
+                            },
+                            label: const Text(
+                              'Pagar',
+                              style: TextStyle(
+                                fontSize: 20, // Defina o tamanho da fonte desejado aqui
+                              ),
+                            ),
+                            icon: const Icon(Icons.payment),
+                            backgroundColor: Colors.red,
+                          ),
+                        ),
+                        Text(
+                          'Total: R\$${calcularTotal().toStringAsFixed(2)}',
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
-// void main() {
-//   runApp(MaterialApp(
-//     debugShowCheckedModeBanner: false,
-//     home: CarrinhoPage(),
-//   ));
-// }
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: CarrinhoPage(),
+  ));
+}
