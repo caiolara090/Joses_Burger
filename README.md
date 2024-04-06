@@ -1,6 +1,6 @@
 # Trabalho-de-Engenharia-de-Software
 
-Trabalho referente à disciplina Prática em Desenvolvimento de Software da UFMG.
+Trabalho referente à disciplina Engenharia de Software da UFMG.
 
 # Membros e Papéis:
 - Caio Lara (Fullstack)
