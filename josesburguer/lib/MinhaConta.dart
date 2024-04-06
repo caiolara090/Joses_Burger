@@ -67,185 +67,15 @@ class _PaginaDadosState extends State<PaginaDados> {
                   children: [
                     SizedBox(height: 20),
                     SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Nome: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: const Color.fromARGB(255, 255, 0, 0),
-                          ),
-                        ),
-                        Text(
-                          '$nome',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Email: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: const Color.fromARGB(255, 255, 0, 0),
-                          ),
-                        ),
-                        Text(
-                          '$email',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Telefone: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: const Color.fromARGB(255, 255, 0, 0),
-                          ),
-                        ),
-                        Text(
-                          '$telefone',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Rua: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: const Color.fromARGB(255, 255, 0, 0),
-                          ),
-                        ),
-                        Text(
-                          '$rua',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Número: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: const Color.fromARGB(255, 255, 0, 0),
-                          ),
-                        ),
-                        Text(
-                          '$numero',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Bairro: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: const Color.fromARGB(255, 255, 0, 0),
-                          ),
-                        ),
-                        Text(
-                          '$bairro',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Complemento: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: const Color.fromARGB(255, 255, 0, 0),
-                          ),
-                        ),
-                        Flexible(
-                          child: Text(
-                            '$complemento',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Ponto de Referência: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: const Color.fromARGB(255, 255, 0, 0),
-                          ),
-                        ),
-                        Flexible(
-                          child: Text(
-                            '$ponto_referencia',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    _buildInfoTextField('Nome:', nome),
+                    _buildInfoTextField('Email:', email),
+                    _buildInfoTextField('Telefone:', telefone.toString()),
+                    _buildInfoTextField('Rua:', rua),
+                    _buildInfoTextField('Número:', numero.toString()),
+                    _buildInfoTextField('Bairro:', bairro),
+                    _buildInfoTextField('Complemento:', complemento),
+                    _buildInfoTextField('Ponto de Referência:', ponto_referencia),
                     SizedBox(height: 20),
-                    Padding(
-  padding: EdgeInsets.symmetric(horizontal: 16),
-  child: ElevatedButton(
-    onPressed: () {
-      // Implemente a ação do botão de avaliar aqui
-    },
-    style: ElevatedButton.styleFrom(
-      backgroundColor: const Color.fromARGB(255, 255, 0, 0), // Define a cor de fundo do botão como vermelho
-      padding: const EdgeInsets.symmetric(
-        vertical: 10.0,
-        horizontal: 50,
-      ),
-    ),
-    child: const Text(
-      'Editar Dados',
-      style: TextStyle(
-        fontSize: 17.0,
-        color: Colors.white, // Define a cor do texto como branco
-      ),
-    ),
-  ),
-),
                     SizedBox(height: 15),
                   ],
                 ),
@@ -302,4 +132,27 @@ class _PaginaDadosState extends State<PaginaDados> {
       ),
     );
   }
+
+  Widget _buildInfoTextField(String label, String value) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 16),
+    child: TextField(
+      enabled: false,
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(
+          fontSize: 25,
+          color: const Color.fromARGB(255, 255, 0, 0),
+        ),
+        prefixText: ' ',
+      ).applyDefaults(Theme.of(context).inputDecorationTheme),
+      style: TextStyle( 
+        fontSize: 18,
+        color: Colors.black,
+      ),
+      controller: TextEditingController(text: value),
+    ),
+  );
+}
+
 }
