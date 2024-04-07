@@ -188,7 +188,11 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                       size: 35, 
                     ),
                     onPressed: () {
-                       Navigator.pushNamed(context, '/avaliacao');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AvaliacaoPage()), // Vai pra página de avaliações
+                      );
+                       //Navigator.pushNamed(context, '/avaliacao'); 
                     },
                   ),
                 ],
