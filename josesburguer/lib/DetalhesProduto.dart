@@ -2,25 +2,29 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:josesburguer/MinhaConta.dart';
 import '/Cardapio.dart';
+import '/Pedidos.dart';
 
 class Produto {
   String nome;
   String descricao;
   double preco;
   bool favorito;
+  String foto;
 
   Produto({
     required this.nome,
     required this.descricao,
     required this.preco,
     this.favorito = false,
+    required this.foto,
   });
 }
 
 class DetalhesPagina extends StatefulWidget {
   final Produto produto;
+  List<Pedido> pedidos; // Adicione a lista de pedidos como parâmetro
 
-  DetalhesPagina({Key? key, required this.produto}) : super(key: key);
+  DetalhesPagina({Key? key, required this.produto, required this.pedidos}) : super(key: key);
 
   @override
   _DetalhesPaginaState createState() => _DetalhesPaginaState();
@@ -110,9 +114,28 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
             Padding(
   padding: EdgeInsets.symmetric(horizontal: 16),
   child: ElevatedButton(
-    onPressed: () {
-      
-    },
+onPressed: () {
+  bool pedidoExistente = false;
+
+  for (var pedido in widget.pedidos) {
+    if (pedido.nome == widget.produto.nome) {
+      pedido.adicionarPedido();
+      pedidoExistente = true;
+      break;
+    }
+  }
+
+  if (!pedidoExistente) {
+    widget.pedidos.add(Pedido(
+      nome: widget.produto.nome,
+      descricao: widget.produto.descricao,
+      valor: widget.produto.preco,
+      quantidade: 1,
+      imagem: widget.produto.foto,
+    ));
+  }
+},
+
     style: ElevatedButton.styleFrom(
       backgroundColor: const Color.fromARGB(255, 255, 0, 0),
       padding: const EdgeInsets.symmetric(

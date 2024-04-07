@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:josesburguer/Cardapio.dart';
 import 'package:josesburguer/Produtos.dart';
+import 'Pedidos.dart';
 
 class PaginaDados extends StatefulWidget {
+
+  List<Pedido> pedidos; // Adicione a lista de pedidos como parâmetro
+
+  PaginaDados({Key? key, required this.pedidos}) : super(key: key);
+
   @override
   _PaginaDadosState createState() => _PaginaDadosState();
 }
@@ -109,7 +115,7 @@ class _PaginaDadosState extends State<PaginaDados> {
               //Navegue para alguma página
               Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PaginaCardapio()),
+                        MaterialPageRoute(builder: (context) => PaginaCardapio(pedidos: widget.pedidos)),
                       );
               break;
             case 1:
@@ -117,14 +123,14 @@ class _PaginaDadosState extends State<PaginaDados> {
               //Navigator.pushReplacementNamed(context, '/pagina2');
               Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CarrinhoPage()),
+                        MaterialPageRoute(builder: (context) => CarrinhoPage(pedidos: widget.pedidos)),
                       );
               break;
             case 2:
               //Navegue para alguma página
               Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PaginaDados()),
+                        MaterialPageRoute(builder: (context) => PaginaDados(pedidos: widget.pedidos)),
                       );
               break;
           }

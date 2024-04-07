@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import '/PaginaCadastro.dart';
 import '/Cardapio.dart';
 import 'dart:convert';
+import '/Pedidos.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -12,6 +13,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  List<Pedido> pedidos = [
+    Pedido(
+      nome: 'Sanduíche',
+      descricao: "O melhor sanduba do mundo!",
+      valor: 15.99,
+      quantidade: 3,
+      imagem: "assets/hamburger.png",
+    )];
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -179,7 +190,7 @@ class _LoginScreenState extends State<LoginScreen> {
         );
         Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PaginaCardapio()),
+                        MaterialPageRoute(builder: (context) => PaginaCardapio(pedidos: pedidos)),
                       );
       } else if (response.statusCode == 401) {
         ScaffoldMessenger.of(context).showSnackBar(

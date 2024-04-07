@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-class PagamentoPage extends StatelessWidget {
+class PagamentoPage extends StatefulWidget {
   final double total;
 
   PagamentoPage({required this.total});
 
+  @override
+  _PagamentoPageState createState() => _PagamentoPageState();
+}
+
+class _PagamentoPageState extends State<PagamentoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +23,7 @@ class PagamentoPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Total do Pedido: R\$${total.toStringAsFixed(2)}',
+              'Total do Pedido: R\$${widget.total.toStringAsFixed(2)}',
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -30,8 +35,8 @@ class PagamentoPage extends StatelessWidget {
                 data: 'https://random.cat/',
                 version: QrVersions.auto,
                 size: 200.0,
-                ),
               ),
+            ),
           ],
         ),
       ),

@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:josesburguer/Avaliacoes.dart';
+import 'package:josesburguer/Pedidos.dart';
 import 'package:josesburguer/Produtos.dart';
 import 'package:josesburguer/DetalhesProduto.dart';
 import 'package:josesburguer/MinhaConta.dart';
+import 'Pedidos.dart';
 
 class PaginaCardapio extends StatefulWidget {
+
+  List<Pedido> pedidos; // Declaração do parâmetro pedidos
+
+  PaginaCardapio({required this.pedidos}); // Construtor que aceita a lista de pedidos
+
   @override
   _PaginaCardapioState createState() => _PaginaCardapioState();
 }
@@ -18,58 +25,68 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
       descricao:
           "Frango grelhado com alface, tomate e maionese em um pão integral.",
       preco: 12.99,
+      foto: "assets/loading.png"
     ),
     Produto(
       nome: "Sanduíche Vegetariano",
       descricao: "Pepino, cenoura, alface, tomate e queijo em um pão de grãos.",
       preco: 9.99,
+      foto: "assets/loading.png"
     ),
     Produto(
       nome: "Hambúrguer Clássico",
       descricao:
           "Hambúrguer de carne, queijo, alface, tomate e molho especial em um pão de hambúrguer.",
       preco: 8.49,
+      foto: "assets/loading.png"
     ),
     Produto(
       nome: "Wrap de Salada Caesar",
       descricao:
           "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
       preco: 10.99,
+      foto: "assets/loading.png"
     ),
     Produto(
       nome: "Sanduíche de Atum",
       descricao:
           "Atum, alface, cebola, picles e maionese em um pão de centeio.",
       preco: 11.49,
+      foto: "assets/loading.png"
     ),
     Produto(
       nome: "Sanduíche de Frango Grelhado",
       descricao:
           "Frango grelhado com alface, tomate e maionese em um pão integral.",
       preco: 12.99,
+      foto: "assets/loading.png"
     ),
     Produto(
       nome: "Sanduíche Vegetariano",
       descricao: "Pepino, cenoura, alface, tomate e queijo em um pão de grãos.",
       preco: 9.99,
+      foto: "assets/loading.png"
     ),
     Produto(
       nome: "Hambúrguer Clássico",
       descricao:
           "Hambúrguer de carne, queijo, alface, tomate e molho especial em um pão de hambúrguer.",
       preco: 8.49,
+      foto: "assets/loading.png"
     ),
     Produto(
       nome: "Wrap de Salada Caesar",
       descricao:
           "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
       preco: 10.99,
+      foto: "assets/loading.png"
     ),
     Produto(
       nome: "Sanduíche de Atum",
       descricao:
           "Atum, alface, cebola, picles e maionese em um pão de centeio.",
       preco: 11.49,
+      foto: "assets/loading.png"
     ),
   ];
 
@@ -196,7 +213,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => DetalhesPagina(
-                                  produto: _filteredProdutos[index],
+                                  produto: _filteredProdutos[index], pedidos: widget.pedidos,
                                 ),
                               ),
                             );
@@ -289,14 +306,14 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
               //Navigator.pushReplacementNamed(context, '/pagina2');
               Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CarrinhoPage()),
+                        MaterialPageRoute(builder: (context) => CarrinhoPage(pedidos: widget.pedidos)),
                       );
               break;
             case 2:
               //Navegue para alguma página
             Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PaginaDados()),
+                        MaterialPageRoute(builder: (context) => PaginaDados(pedidos: widget.pedidos)),
                       );
               break;
           }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Pedidos.dart';
 
 class Avaliacao {
   final String nome;
@@ -16,9 +17,14 @@ class Avaliacao {
   });
 }
 
-class AvaliacaoPage extends StatelessWidget {
+class AvaliacaoPage extends StatefulWidget {
   AvaliacaoPage({Key? key}) : super(key: key);
 
+  @override
+  _AvaliacaoPageState createState() => _AvaliacaoPageState();
+}
+
+class _AvaliacaoPageState extends State<AvaliacaoPage> {
   final List<Avaliacao> avaliacoes = [
     Avaliacao(
       nome: 'João',
@@ -182,6 +188,5 @@ class AvaliacaoPage extends StatelessWidget {
 }
 
 // void main() {
-//   runApp(AvaliacaoPage(
-//   ));
+//   runApp(AvaliacaoPage());
 // }
