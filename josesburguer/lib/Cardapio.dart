@@ -105,6 +105,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60), 
         child: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: const Color.fromARGB(255, 255, 0, 0),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

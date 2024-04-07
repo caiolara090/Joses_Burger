@@ -42,6 +42,7 @@ class _PaginaDadosState extends State<PaginaDados> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 255, 0, 0),
         title: Center(
           child: Text(
