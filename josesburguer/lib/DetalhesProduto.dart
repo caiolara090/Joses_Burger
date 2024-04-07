@@ -31,36 +31,33 @@ class DetalhesPagina extends StatefulWidget {
 }
 
 class _DetalhesPaginaState extends State<DetalhesPagina> {
-  bool _isFavorito = false;
-  int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            Expanded(
+        automaticallyImplyLeading:
+            true, // Mostra automaticamente o botão de voltar
+        flexibleSpace: Padding(
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top +
+                  5.0), // Ajusta o padding superior
+          child: Center(
+            child: Container(
+              alignment: Alignment.center,
               child: Text(
-                widget.produto.nome,
-                overflow: TextOverflow.ellipsis,
+                "Detalhes",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
-            IconButton(
-              icon: Icon(
-                _isFavorito ? Icons.star : Icons.star_border,
-                color: _isFavorito ? Colors.yellow : Colors.white,
-              ),
-              onPressed: () {
-                setState(() {
-                  _isFavorito = !_isFavorito;
-                });
-              },
-            ),
-          ],
+          ),
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -54,12 +54,6 @@ Widget build(BuildContext context) {
         ),
       ),
       backgroundColor: Colors.red,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
     ),
     body: ListView.builder(
   itemCount: widget.pedidos.length,
