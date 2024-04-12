@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Pedidos.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Avaliacao {
   final String nome;
@@ -23,29 +24,63 @@ class AvaliacaoPage extends StatefulWidget {
 }
 
 class _AvaliacaoPageState extends State<AvaliacaoPage> {
-  final List<Avaliacao> avaliacoes = [
-    Avaliacao(
-      nome: 'João',
-      nota: 5,
-      comentario: 'Excelente produto!',
-      data: DateTime.now(),
-    ),
-    Avaliacao(
-      nome: 'Rosalía',
-      nota: 5,
-      comentario:
-          'Adorei o Hamburguer Saul Goodman acompanhado da limonada Jesse Pinkman com batatas Indiana Jones! Obrigada pelo carinho',
-      data: DateTime.now(),
-    ),
-    Avaliacao(
-      nome: 'Pessoa Chata',
-      nota: 3,
-      comentario:
-          'Pedi o hamburguer e o entregador não me deu boa noite quando chegou, aff!!',
-      data: DateTime.now(),
-    ),
-    // Adicione mais avaliações aqui conforme necessário
-  ];
+  List<Avaliacao> avaliacoes = [];
+  double? notaMedia;
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchAvaliacoes();
+    fetchNotaMedia();
+  }
+
+  Future<void> fetchAvaliacoes() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    final response = await http.get(Uri.parse('http://10.0.2.2:3000/buscarAvaliacoes'));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      setState(() {
+        avaliacoes = data.map((item) => Avaliacao(
+          nome: item['nome'],
+          nota: item['nota'],
+          comentario: item['texto_avaliacao'] ?? '',
+          data: DateTime.parse(item['data']),
+        )).toList();
+        isLoading = false;
+      });
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      throw Exception('Falha ao carregar as avaliações');
+    }
+  }
+
+  Future<void> fetchNotaMedia() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    final response = await http.get(Uri.parse('http://10.0.2.2:3000/mediaAvaliacoes'));
+
+    if (response.statusCode == 200) {
+      final dynamic data = json.decode(response.body);
+      setState(() {
+        notaMedia = data['media'].toDouble();
+        isLoading = false;
+      });
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      throw Exception('Falha ao carregar a nota média');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,11 +98,11 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
           Container(
             color: Colors.red,
             padding: const EdgeInsets.all(16.0),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Nota média: 5.0 ', // Aqui será dinâmico, apenas um exemplo
+                  notaMedia != null ? 'Nota média: ${notaMedia!.toStringAsFixed(1)}' : 'Nota média: -',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -82,78 +117,80 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: avaliacoes.length,
-              itemBuilder: (context, index) {
-                final avaliacao = avaliacoes[index];
-                return Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                              decoration: BoxDecoration(
-                                color: Colors.red, // Define a cor de fundo como vermelho
-                                borderRadius: BorderRadius.circular(8.0), // Define bordas arredondadas
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '${avaliacao.nome} ',
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
+            child: isLoading
+                ? Center(child: CircularProgressIndicator()) // Mostra o indicador de carregamento enquanto os dados são buscados
+                : ListView.builder(
+                    itemCount: avaliacoes.length,
+                    itemBuilder: (context, index) {
+                      final avaliacao = avaliacoes[index];
+                      return Container(
+                        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '${avaliacao.nome} ',
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 4.0),
+                                      ],
                                     ),
                                   ),
-                                  const SizedBox(height: 4.0),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(width: 8.0),
+                              ],
                             ),
-                          ),
-                          const SizedBox(width: 8.0),
-                        ],
-                      ),
-                      const SizedBox(height: 8.0),
-                      Row(
-                        children: List.generate(5, (index) {
-                          if (index < avaliacao.nota) {
-                            return const Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                            );
-                          } else {
-                            return const Icon(
-                              Icons.star_border,
-                              color: Colors.grey,
-                            );
-                          }
-                        }),
-                      ),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        '${avaliacao.comentario}',
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        '${avaliacao.data.day}/${avaliacao.data.month}/${avaliacao.data.year}',
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                    ],
+                            const SizedBox(height: 8.0),
+                            Row(
+                              children: List.generate(5, (index) {
+                                if (index < avaliacao.nota) {
+                                  return const Icon(
+                                    Icons.star,
+                                    color: Colors.yellow,
+                                  );
+                                } else {
+                                  return const Icon(
+                                    Icons.star_border,
+                                    color: Colors.grey,
+                                  );
+                                }
+                              }),
+                            ),
+                            const SizedBox(height: 8.0),
+                            Text(
+                              '${avaliacao.comentario}',
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            const SizedBox(height: 8.0),
+                            Text(
+                              '${avaliacao.data.day}/${avaliacao.data.month}/${avaliacao.data.year}',
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
           ),
         ],
       ),
