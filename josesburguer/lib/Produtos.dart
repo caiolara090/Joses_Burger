@@ -7,8 +7,9 @@ import '/Pedidos.dart';
 class CarrinhoPage extends StatefulWidget {
 
   List<Pedido> pedidos; // Adicione a lista de pedidos como parâmetro
+  String email_user;
 
-  CarrinhoPage({Key? key, required this.pedidos}) : super(key: key);
+  CarrinhoPage({Key? key, required this.pedidos, required this.email_user}) : super(key: key);
 
   @override
   _CarrinhoPageState createState() => _CarrinhoPageState();
@@ -17,20 +18,6 @@ class CarrinhoPage extends StatefulWidget {
 class _CarrinhoPageState extends State<CarrinhoPage> {
 
   int _currentIndex = 1;
-
-  // List<Pedido> pedidos = [
-  //   Pedido(
-  //     nome: 'Sanduíche',
-  //     valor: 15.99,
-  //     quantidade: 3,
-  //     imagem: "assets/hamburger.png",
-  //   ),
-  //   Pedido(
-  //     nome: 'Batata Frita',
-  //     valor: 5.99,
-  //     imagem: "assets/fritas_1.png",
-  //   ),
-  // ];
 
   double calcularTotal() {
     double total = 0;
@@ -151,7 +138,7 @@ Widget build(BuildContext context) {
             case 0:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PaginaCardapio(pedidos: widget.pedidos)),
+                MaterialPageRoute(builder: (context) => PaginaCardapio(pedidos: widget.pedidos, email_user:widget.email_user)),
               );
               break;
             case 1:
@@ -160,7 +147,7 @@ Widget build(BuildContext context) {
             case 2:
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PaginaDados(pedidos: widget.pedidos)),
+                MaterialPageRoute(builder: (context) => PaginaDados(pedidos: widget.pedidos, email_user:widget.email_user)),
               );
               break;
           }

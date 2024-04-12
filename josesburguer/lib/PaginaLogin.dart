@@ -14,14 +14,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 
-  List<Pedido> pedidos = [
-    Pedido(
-      nome: 'Sanduíche',
-      descricao: "O melhor sanduba do mundo!",
-      valor: 15.99,
-      quantidade: 3,
-      imagem: "assets/hamburger.png",
-    )];
+  List<Pedido> pedidos = [];
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -190,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
         );
         Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PaginaCardapio(pedidos: pedidos)),
+                        MaterialPageRoute(builder: (context) => PaginaCardapio(pedidos: pedidos, email_user:email)),
                       );
       } else if (response.statusCode == 401) {
         ScaffoldMessenger.of(context).showSnackBar(

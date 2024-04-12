@@ -9,8 +9,9 @@ import 'Pedidos.dart';
 class PaginaCardapio extends StatefulWidget {
 
   List<Pedido> pedidos; // Declaração do parâmetro pedidos
+  String email_user;
 
-  PaginaCardapio({required this.pedidos}); // Construtor que aceita a lista de pedidos
+  PaginaCardapio({required this.pedidos, required this.email_user}); // Construtor que aceita a lista de pedidos
 
   @override
   _PaginaCardapioState createState() => _PaginaCardapioState();
@@ -308,14 +309,14 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
               //Navigator.pushReplacementNamed(context, '/pagina2');
               Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CarrinhoPage(pedidos: widget.pedidos)),
+                        MaterialPageRoute(builder: (context) => CarrinhoPage(pedidos: widget.pedidos, email_user:widget.email_user)),
                       );
               break;
             case 2:
               //Navegue para alguma página
             Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PaginaDados(pedidos: widget.pedidos)),
+                        MaterialPageRoute(builder: (context) => PaginaDados(pedidos: widget.pedidos, email_user:widget.email_user)),
                       );
               break;
           }

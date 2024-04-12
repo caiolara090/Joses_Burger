@@ -82,8 +82,34 @@ app.post('/verificarUsuario', async (req, res) => {
   }
 });
 
+// Rota para buscar os dados de um usuário pelo email
+app.get('/buscarUsuario', async (req, res) => {
+  const { email } = req.query;
+  try {
+    const usuario = await User.findOne({ email });
+    if (!usuario) {
+      res.status(404).send('Usuário não encontrado');
+      return;
+    }
+    res.status(200).json({
+      nome: usuario.nome,
+      email: usuario.email,
+      idade: usuario.idade,
+      rua: usuario.rua,
+      bairro: usuario.bairro,
+      numero: usuario.numero,
+      complemento: usuario.complemento,
+      ponto_ref: usuario.ponto_ref
+    });
+  } catch (error) {
+    console.error('Erro ao buscar usuário:', error);
+    res.status(500).send('Erro ao buscar usuário');
+  }
+});
+
 // Iniciar o servidor para inserir usuários
 app.listen(3000, () => {
   console.log('Servidor para inserir usuários rodando na porta 3000/inserirUsuario');
-  console.log('Servidor para inserir usuários rodando na porta 3000/verificarUsuario');
+  console.log('Servidor para verificar usuários rodando na porta 3000/verificarUsuario');
+  console.log('Servidor para buscar usuários rodando na porta 3000/buscarUsuario');
 });
