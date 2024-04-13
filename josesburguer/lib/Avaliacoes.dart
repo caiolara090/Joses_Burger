@@ -24,6 +24,7 @@ class AvaliacaoPage extends StatefulWidget {
 }
 
 class _AvaliacaoPageState extends State<AvaliacaoPage> {
+  final TextEditingController _avaliacaoController = TextEditingController();
   List<Avaliacao> avaliacoes = [];
   double? notaMedia;
   bool isLoading = false;
@@ -191,6 +192,47 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                       );
                     },
                   ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _avaliacaoController,
+                    maxLines: 2,
+                    decoration: InputDecoration(
+                      hintText: 'Digite sua avaliação aqui',
+                      filled: true,
+                      fillColor: Colors.grey[200],
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    // Aqui você pode enviar a avaliação para o backend
+                    String avaliacaoTexto = _avaliacaoController.text;
+                    // Faça algo com a avaliaçãoTexto, como enviar para o backend
+                    // Lembre-se de limpar o texto da caixa de texto após enviar
+                    _avaliacaoController.clear();
+                  },
+                  child: Icon(Icons.send),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(20),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
