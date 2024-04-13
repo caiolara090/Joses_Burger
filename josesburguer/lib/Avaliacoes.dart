@@ -24,6 +24,7 @@ class AvaliacaoPage extends StatefulWidget {
 }
 
 class _AvaliacaoPageState extends State<AvaliacaoPage> {
+  List<bool> selectedStars = [false, false, false, false, false]; // Lista para controlar o estado das estrelas
   final TextEditingController _avaliacaoController = TextEditingController();
   List<Avaliacao> avaliacoes = [];
   double? notaMedia;
@@ -218,11 +219,56 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                 SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
-                    // Aqui você pode enviar a avaliação para o backend
-                    String avaliacaoTexto = _avaliacaoController.text;
-                    // Faça algo com a avaliaçãoTexto, como enviar para o backend
-                    // Lembre-se de limpar o texto da caixa de texto após enviar
-                    _avaliacaoController.clear();
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return StatefulBuilder(
+                          builder: (context, setState) {
+                            return AlertDialog(
+                              title: Text('Avaliar'),
+                              content: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: List.generate(5, (index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        for (int i = 0; i <= index; i++) {
+                                          selectedStars[i] = true; // Atualiza o estado das estrelas
+                                        }
+                                        for (int i = index + 1; i < 5; i++) {
+                                          selectedStars[i] = false; // Reseta o estado das estrelas seguintes
+                                        }
+                                      });
+                                    },
+                                    child: Icon(
+                                      selectedStars[index] ? Icons.star : Icons.star_border,
+                                      color: selectedStars[index] ? Colors.yellow : null,
+                                    ),
+                                  );
+                                }),
+                              ),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  onPressed: () {
+                                    // Aqui você pode enviar a avaliação para o backend
+                                    String avaliacaoTexto = _avaliacaoController.text;
+                                    int notaAvaliacao = selectedStars.where((star) => star).length;
+                                    // Faça algo com a avaliaçãoTexto e notaAvaliacao, como enviar para o backend
+                                    // Lembre-se de limpar o texto da caixa de texto após enviar
+                                    _avaliacaoController.clear();
+                                    Navigator.of(context).pop(); // Fecha o diálogo após enviar a avaliação
+                                  },
+                                  child: Text('Enviar'),
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.red), // Define a cor de fundo como vermelho
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                    );
                   },
                   child: Icon(Icons.send),
                   style: ElevatedButton.styleFrom(
