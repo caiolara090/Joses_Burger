@@ -226,44 +226,102 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                           builder: (context, setState) {
                             return AlertDialog(
                               title: Text('Avaliar'),
-                              content: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: List.generate(5, (index) {
-                                  return InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        for (int i = 0; i <= index; i++) {
-                                          selectedStars[i] = true; // Atualiza o estado das estrelas
-                                        }
-                                        for (int i = index + 1; i < 5; i++) {
-                                          selectedStars[i] = false; // Reseta o estado das estrelas seguintes
-                                        }
-                                      });
-                                    },
-                                    child: Icon(
-                                      selectedStars[index] ? Icons.star : Icons.star_border,
-                                      color: selectedStars[index] ? Colors.yellow : null,
-                                    ),
-                                  );
-                                }),
-                              ),
-                              actions: <Widget>[
-                                ElevatedButton(
-                                  onPressed: () {
-                                    // Aqui você pode enviar a avaliação para o backend
-                                    String avaliacaoTexto = _avaliacaoController.text;
-                                    int notaAvaliacao = selectedStars.where((star) => star).length;
-                                    // Faça algo com a avaliaçãoTexto e notaAvaliacao, como enviar para o backend
-                                    // Lembre-se de limpar o texto da caixa de texto após enviar
-                                    _avaliacaoController.clear();
-                                    Navigator.of(context).pop(); // Fecha o diálogo após enviar a avaliação
-                                  },
-                                  child: Text('Enviar'),
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.red), // Define a cor de fundo como vermelho
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: List.generate(5, (index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            for (int i = 0; i <= index; i++) {
+                                              selectedStars[i] = true; // Atualiza o estado das estrelas
+                                            }
+                                            for (int i = index + 1; i < 5; i++) {
+                                              selectedStars[i] = false; // Reseta o estado das estrelas seguintes
+                                            }
+                                          });
+                                        },
+                                        child: Icon(
+                                          selectedStars[index] ? Icons.star : Icons.star_border,
+                                          color: selectedStars[index] ? Colors.yellow : null,
+                                        ),
+                                      );
+                                    }),
                                   ),
-                                ),
-                              ],
+                                  SizedBox(height: 20),
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      String avaliacaoTexto = _avaliacaoController.text;
+                                      int notaAvaliacao = selectedStars.where((star) => star).length;
+
+                                      // Enviar avaliação para o backend
+                                      try {
+                                        setState(() {
+                                          isLoading = true;
+                                        });
+
+                                        final response = await http.post(
+                                          Uri.parse('http://10.0.2.2:3000/inserirAvaliacao'),
+                                          headers: {'Content-Type': 'application/json'},
+                                          body: json.encode({
+                                            'nome': 'Blá', // Nome do produto avaliado
+                                            'texto_avaliacao': avaliacaoTexto,
+                                            'nota': notaAvaliacao,
+                                          }),
+                                        );
+
+                                        setState(() {
+                                          isLoading = false;
+                                        });
+
+                                        if (response.statusCode == 201) {
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                title: Text('Sucesso'),
+                                                content: Text('Avaliação inserida com sucesso!'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context).pop();
+                                                    },
+                                                    child: Text('OK'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          showDialog(
+                                            context: context,
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                title: Text('Erro'),
+                                                content: Text(
+                                                    'Falha ao inserir a avaliação. Tente novamente mais tarde.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context).pop();
+                                                    },
+                                                    child: Text('OK'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+                                      } catch (error) {
+                                        print('Erro ao enviar avaliação: $error');
+                                      }
+                                    },
+                                    child: Text('Enviar Avaliação'),
+                                  ),
+                                ],
+                              ),
                             );
                           },
                         );
@@ -273,6 +331,7 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                   child: Icon(Icons.send),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
                     shape: CircleBorder(),
                     padding: EdgeInsets.all(20),
                   ),
