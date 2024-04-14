@@ -24,7 +24,7 @@ class AvaliacaoPage extends StatefulWidget {
 }
 
 class _AvaliacaoPageState extends State<AvaliacaoPage> {
-  List<bool> selectedStars = [false, false, false, false, false]; // Lista para controlar o estado das estrelas
+  List<bool> selectedStars = [true, false, false, false, false]; // Lista para controlar o estado das estrelas
   final TextEditingController _avaliacaoController = TextEditingController();
   List<Avaliacao> avaliacoes = [];
   double? notaMedia;
@@ -42,17 +42,20 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
       isLoading = true;
     });
 
-    final response = await http.get(Uri.parse('http://10.0.2.2:3000/buscarAvaliacoes'));
+    final response =
+        await http.get(Uri.parse('http://10.0.2.2:3000/buscarAvaliacoes'));
 
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
       setState(() {
-        avaliacoes = data.map((item) => Avaliacao(
-          nome: item['nome'],
-          nota: item['nota'],
-          comentario: item['texto_avaliacao'] ?? '',
-          data: DateTime.parse(item['data']),
-        )).toList();
+        avaliacoes = data
+            .map((item) => Avaliacao(
+                  nome: item['nome'],
+                  nota: item['nota'],
+                  comentario: item['texto_avaliacao'] ?? '',
+                  data: DateTime.parse(item['data']),
+                ))
+            .toList();
         isLoading = false;
       });
     } else {
@@ -68,7 +71,8 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
       isLoading = true;
     });
 
-    final response = await http.get(Uri.parse('http://10.0.2.2:3000/mediaAvaliacoes'));
+    final response =
+        await http.get(Uri.parse('http://10.0.2.2:3000/mediaAvaliacoes'));
 
     if (response.statusCode == 200) {
       final dynamic data = json.decode(response.body);
@@ -120,13 +124,16 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
           ),
           Expanded(
             child: isLoading
-                ? Center(child: CircularProgressIndicator()) // Mostra o indicador de carregamento enquanto os dados são buscados
+                ? Center(
+                    child:
+                        CircularProgressIndicator()) // Mostra o indicador de carregamento enquanto os dados são buscados
                 : ListView.builder(
                     itemCount: avaliacoes.length,
                     itemBuilder: (context, index) {
                       final avaliacao = avaliacoes[index];
                       return Container(
-                        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 16.0),
                         padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -139,13 +146,15 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                               children: [
                                 Expanded(
                                   child: Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                                    decoration: BoxDecoration(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0, vertical: 4.0),
+                                      decoration: BoxDecoration(
                                       color: Colors.red,
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           '${avaliacao.nome} ',
@@ -226,36 +235,33 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                           builder: (context, setState) {
                             return AlertDialog(
                               title: Text('Avaliar'),
-                              content: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: List.generate(5, (index) {
-                                      return InkWell(
-                                        onTap: () {
-                                          setState(() {
-                                            for (int i = 0; i <= index; i++) {
-                                              selectedStars[i] = true; // Atualiza o estado das estrelas
-                                            }
-                                            for (int i = index + 1; i < 5; i++) {
-                                              selectedStars[i] = false; // Reseta o estado das estrelas seguintes
-                                            }
-                                          });
-                                        },
-                                        child: Icon(
-                                          selectedStars[index] ? Icons.star : Icons.star_border,
-                                          color: selectedStars[index] ? Colors.yellow : null,
-                                        ),
-                                      );
-                                    }),
-                                  ),
-                                  SizedBox(height: 20),
+                              content: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: List.generate(5, (index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        for (int i = 0; i <= index; i++) {
+                                          selectedStars[i] = true; // Atualiza o estado das estrelas
+                                        }
+                                        for (int i = index + 1; i < 5; i++) {
+                                          selectedStars[i] = false; // Reseta o estado das estrelas seguintes
+                                        }
+                                      });
+                                    },
+                                    child: Icon(
+                                      selectedStars[index] ? Icons.star : Icons.star_border,
+                                      color: selectedStars[index] ? Colors.yellow : null,
+                                    ),
+                                  );
+                                }),
+                              ),
+                              actions: <Widget>[
                                   ElevatedButton(
                                     onPressed: () async {
                                       String avaliacaoTexto = _avaliacaoController.text;
                                       int notaAvaliacao = selectedStars.where((star) => star).length;
-
                                       // Enviar avaliação para o backend
                                       try {
                                         setState(() {
@@ -263,8 +269,11 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                                         });
 
                                         final response = await http.post(
-                                          Uri.parse('http://10.0.2.2:3000/inserirAvaliacao'),
-                                          headers: {'Content-Type': 'application/json'},
+                                          Uri.parse(
+                                              'http://10.0.2.2:3000/inserirAvaliacao'),
+                                          headers: {
+                                            'Content-Type': 'application/json'
+                                          },
                                           body: json.encode({
                                             'nome': 'Blá', // Nome do produto avaliado
                                             'texto_avaliacao': avaliacaoTexto,
@@ -277,12 +286,24 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                                         });
 
                                         if (response.statusCode == 201) {
+                                          // Atualizar a lista de avaliações local com a nova avaliação
+                                          setState(() {
+                                            isLoading = true; // Mostrar indicador de carregamento
+                                          });
+                                          // Atualizar a lista de avaliações chamando fetchAvaliacoes()
+                                          await fetchAvaliacoes();
+
+                                          setState(() {
+                                            isLoading = false; // Esconder indicador de carregamento após a atualização
+                                          });
+
                                           showDialog(
                                             context: context,
                                             builder: (context) {
                                               return AlertDialog(
                                                 title: Text('Sucesso'),
-                                                content: Text('Avaliação inserida com sucesso!'),
+                                                content: Text(
+                                                    'Avaliação inserida com sucesso!'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
@@ -315,14 +336,18 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                                           );
                                         }
                                       } catch (error) {
-                                        print('Erro ao enviar avaliação: $error');
+                                        print(
+                                            'Erro ao enviar avaliação: $error');
                                       }
+                                      selectedStars = [true, false, false, false, false];
                                     },
-                                    child: Text('Enviar Avaliação'),
+                                    child: Text('Enviar'),
+                                    style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.red), // Define a cor de fundo como vermelho
+                                    ),
                                   ),
                                 ],
-                              ),
-                            );
+                              );
                           },
                         );
                       },
