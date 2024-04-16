@@ -59,101 +59,115 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
       ),
 
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            if (widget.produto != null)
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Image.asset(
-                        'assets/image_0.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(width: 16),
-                  ],
+  child: Padding(
+    padding: EdgeInsets.all(16.0), // Adiciona espaço ao redor do conteúdo
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (widget.produto != null)
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Image.asset(
+                  'assets/image_0.png',
+                  fit: BoxFit.cover,
                 ),
-              ),
-            SizedBox(height: 16),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Text(
-                widget.produto.descricao,
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ), 
+                SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    widget.produto.nome ?? '',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ), 
+                  ),
+                ),
+              ],
+            ),
+          ),
+        SizedBox(height: 16),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            widget.produto?.descricao ?? '', // Verifica se a descrição é nula
+            textAlign: TextAlign.justify,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ), 
+          ),
+        ),
+        SizedBox(height: 26),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Center(
+            child: Text(
+              'R\$ ${widget.produto?.preco.toStringAsFixed(2) ?? ''}',
+              textAlign: TextAlign.justify,
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ), 
+            ),
+          ),
+        ),
+        SizedBox(height: 16),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: ElevatedButton(
+            onPressed: () {
+              if (widget.produto != null) { // Verifica se o produto não é nulo
+                bool pedidoExistente = false;
+
+                for (var pedido in widget.pedidos) {
+                  if (pedido.nome == widget.produto.nome) {
+                    pedido.adicionarPedido();
+                    pedidoExistente = true;
+                    break;
+                  }
+                }
+
+                if (!pedidoExistente) {
+                  widget.pedidos.add(Pedido(
+                    nome: widget.produto.nome,
+                    descricao: widget.produto.descricao ?? '',
+                    valor: widget.produto.preco,
+                    quantidade: 1,
+                    imagem: widget.produto.foto,
+                  ));
+                }
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+              padding: const EdgeInsets.symmetric(
+                vertical: 10.0,
+                horizontal: 50,
               ),
             ),
-            SizedBox(height: 26),
-            Padding(
-  padding: EdgeInsets.symmetric(horizontal: 16),
-  child: Center(
-    child: Text(
-      'R\$ ${widget.produto.preco.toStringAsFixed(2)}',
-      textAlign: TextAlign.justify,
-      style: TextStyle(
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      ), 
-    ),
-  ),
-),
-
-            SizedBox(height: 16),
-            Padding(
-  padding: EdgeInsets.symmetric(horizontal: 16),
-  child: ElevatedButton(
-onPressed: () {
-  bool pedidoExistente = false;
-
-  for (var pedido in widget.pedidos) {
-    if (pedido.nome == widget.produto.nome) {
-      pedido.adicionarPedido();
-      pedidoExistente = true;
-      break;
-    }
-  }
-
-  if (!pedidoExistente) {
-    widget.pedidos.add(Pedido(
-      nome: widget.produto.nome,
-      descricao: widget.produto.descricao,
-      valor: widget.produto.preco,
-      quantidade: 1,
-      imagem: widget.produto.foto,
-    ));
-  }
-},
-
-    style: ElevatedButton.styleFrom(
-      backgroundColor: const Color.fromARGB(255, 255, 0, 0),
-      padding: const EdgeInsets.symmetric(
-        vertical: 10.0,
-        horizontal: 50,
-      ),
-    ),
-    child: const Text(
-      'Adicionar',
-      style: TextStyle(
-        fontSize: 17.0,
-        color: Colors.white, 
-      ),
-    ),
-  ),
-),
-
-
-          ],
+            child: const Text(
+              'Adicionar',
+              style: TextStyle(
+                fontSize: 17.0,
+                color: Colors.white, 
+              ),
+            ),
+          ),
         ),
-      ),
+      ],
+    ),
+  ),
+),
+
+
+
+
       // bottomNavigationBar: BottomNavigationBar(
       //   backgroundColor: const Color.fromARGB(255, 255, 0, 0),
       //   selectedItemColor: Color.fromARGB(255, 0, 0, 0),
