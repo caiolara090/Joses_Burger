@@ -2,6 +2,8 @@
 
 Trabalho referente à disciplina Engenharia de Software da UFMG.
 
+![](josesburguer/assets/JBlogo.png)
+
 # Membros e Papéis:
 - Caio Lara (Fullstack)
 - José Eduardo Massucato (Fullstack)
