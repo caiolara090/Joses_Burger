@@ -123,7 +123,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
       ),
     ),
     Image.asset(
-      'assets/JBlogo.png', 
+      'assets/JB_font.png', 
       width: 70, 
       height: 75, 
     ),

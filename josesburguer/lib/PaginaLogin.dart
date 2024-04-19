@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
           height: MediaQuery.of(context).size.height * 1.4, // Ajuste a altura da imagem conforme necessário
           child: CircleAvatar(
             radius: 80, // Ajuste o tamanho da imagem
-            child: Image.asset("assets/1.png", height: 200),
+            child: Image.asset("assets/JBlogo.png", height: 200),
           ),
         ),
       ),
