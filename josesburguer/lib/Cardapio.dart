@@ -102,21 +102,27 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60), 
-        child: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: const Color.fromARGB(255, 255, 0, 0),
-          title: Center(
+return Scaffold(
+  appBar: PreferredSize(
+    preferredSize: Size.fromHeight(60), 
+    child: AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+      title: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: 20), // Adiciona espaço de 20 pixels acima da imagem
+          Center(
             child: Image.asset(
               'assets/JB_font.png', 
               width: 350, 
-              height: 200, 
-            )
-          )
-        ),
+              height: 250, 
+            ),
+          ),
+        ],
       ),
+    ),
+  ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
