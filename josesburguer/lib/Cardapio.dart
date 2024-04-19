@@ -29,6 +29,13 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
       foto: "assets/H_normal.png"
     ),
     Produto(
+      nome: "BIG X!!",
+      descricao:
+          "Frango grelhado com alface, tomate e maionese em um pão integral.",
+      preco: 12.99,
+      foto: "assets/H_X.png"
+    ),
+    Produto(
       nome: "Sanduíche Vegetariano",
       descricao: "Pepino, cenoura, alface, tomate e queijo em um pão de grãos.",
       preco: 9.99,
