@@ -199,7 +199,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 5),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(

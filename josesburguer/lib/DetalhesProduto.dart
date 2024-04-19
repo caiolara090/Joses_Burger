@@ -149,7 +149,7 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
         '${widget.produto.nome} adicionado ao carrinho',
         style: TextStyle(color: Colors.white), // Define a cor do texto
       ),
-      duration: Duration(seconds: 2), // Define a duração do pop-up
+      duration: Duration(seconds: 1), // Define a duração do pop-up
       behavior: SnackBarBehavior.fixed, // Define a animação como flutuante
       backgroundColor: Colors.red, // Define a cor de fundo vermelho claro
     ),

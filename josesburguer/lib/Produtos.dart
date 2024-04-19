@@ -183,10 +183,14 @@ Widget build(BuildContext context) {
                           width: 150, // Defina a largura desejada aqui
                           child: FloatingActionButton.extended(
                             onPressed: () {
+                              double valor_compra = calcularTotal();
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => PagamentoPage(total: calcularTotal())),
+                                MaterialPageRoute(builder: (context) => PagamentoPage(total: valor_compra)),
                               );
+                              widget.pedidos.clear();
+                              // Atualizar a exibição após limpar a lista de pedidos
+                              setState(() {});
                             },
                             label: const Text(
                               'Pagar',
@@ -196,6 +200,7 @@ Widget build(BuildContext context) {
                             ),
                             icon: const Icon(Icons.payment),
                             backgroundColor: Colors.red,
+                            foregroundColor: Colors.white,
                           ),
                         ),
                         Text(
