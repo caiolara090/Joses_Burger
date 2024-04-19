@@ -109,33 +109,38 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
           automaticallyImplyLeading: false,
           backgroundColor: const Color.fromARGB(255, 255, 0, 0),
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "   Jose's",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ), 
-              ),
-              Image.asset(
-                'assets/JBlogo.png', 
-                width: 70, 
-                height: 75, 
-              ),
-              Text(
-                'Burguer   ',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ), 
-              ),
-            ],
-          ),
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Expanded(
+      child: Text(
+        "Jose's",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ), 
+      ),
+    ),
+    Image.asset(
+      'assets/JBlogo.png', 
+      width: 70, 
+      height: 75, 
+    ),
+    Expanded(
+      child: Text(
+        'Burguer',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ), 
+      ),
+    ),
+  ],
+),
+
         ),
       ),
       body: Container(
