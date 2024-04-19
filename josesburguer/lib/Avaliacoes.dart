@@ -18,7 +18,8 @@ class Avaliacao {
 }
 
 class AvaliacaoPage extends StatefulWidget {
-  AvaliacaoPage({Key? key}) : super(key: key);
+  String email_user;
+  AvaliacaoPage({Key? key, required this.email_user}) : super(key: key);
 
   @override
   _AvaliacaoPageState createState() => _AvaliacaoPageState();
@@ -28,6 +29,7 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
   List<bool> selectedStars = [true, false, false, false, false]; // Lista para controlar o estado das estrelas
   final TextEditingController _avaliacaoController = TextEditingController();
   List<Avaliacao> avaliacoes = [];
+  late String nome="";
   double? notaMedia;
   bool isLoading = false;
 
@@ -36,6 +38,33 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
     super.initState();
     fetchAvaliacoes();
     fetchNotaMedia();
+    buscarDadosDaConta();
+  }
+
+  Future<void> buscarDadosDaConta() async {
+
+    String email_usuario = widget.email_user;
+    
+    String url = "http://10.0.2.2:3000/buscarUsuario?email=$email_usuario";
+
+    try {
+      final response = await http.get(Uri.parse(url));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        setState(() {
+          nome = data['nome'];
+          isLoading = false; // Define isLoading como false quando os dados são carregados com sucesso
+        });
+      } else {
+        throw Exception('Falha ao carregar os dados do usuário');
+      }
+    } catch (error) {
+      print('Erro ao carregar os dados do usuário: $error');
+      setState(() {
+        isLoading = false; // Define isLoading como false em caso de erro
+      });
+    }
   }
 
   Future<void> fetchAvaliacoes() async {
@@ -57,6 +86,7 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                   data: DateTime.parse(item['data']),
                 ))
             .toList();
+        avaliacoes = avaliacoes.reversed.toList();
         isLoading = false;
       });
     } else {
@@ -276,7 +306,7 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                                             'Content-Type': 'application/json'
                                           },
                                           body: json.encode({
-                                            'nome': 'Blá', // Nome do produto avaliado
+                                            'nome': nome, // Nome do usuário
                                             'texto_avaliacao': avaliacaoTexto,
                                             'nota': notaAvaliacao,
                                           }),
