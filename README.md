@@ -76,11 +76,3 @@ Tarefas e responsáveis:
 - Implementar a lógica no backend para guardar no banco de dados as avaliações [José]
 
 
-```mermaid
-graph TD
-    Start --> A(Faz uma escolha)
-    A -->|Escolha 1| B(Faça a ação 1)
-    A -->|Escolha 2| C(Faça a ação 2)
-    B --> D(Fim)
-    C --> D
-```
