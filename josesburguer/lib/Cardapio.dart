@@ -108,17 +108,13 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
         child: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: const Color.fromARGB(255, 255, 0, 0),
-          title: Row(
-  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  children: [
-    Image.asset(
-      'assets/JB_font.png', 
-      width: 70, 
-      height: 75, 
-    ),
-  ],
-),
-
+          title: Center(
+            child: Image.asset(
+              'assets/JB_font.png', 
+              width: 350, 
+              height: 200, 
+            )
+          )
         ),
       ),
       body: Container(
