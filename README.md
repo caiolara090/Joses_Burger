@@ -75,6 +75,6 @@ Tarefas e responsáveis:
 - Implementar as caixas de texto para avaliações com nome do usuário e data da avaliação [José]
 - Implementar a lógica no backend para guardar no banco de dados as avaliações [José]
 
-![](josesburguer/assets/Diagrama de sequência básico.png)
+![](josesburguer/assets/arquivo1.png)
 
-![](josesburguer/assets/BPMN 2.0.png)
+![](josesburguer/assets/arquivo2.png)
