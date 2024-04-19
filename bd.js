@@ -153,7 +153,8 @@ app.get('/mediaAvaliacoes', async (req, res) => {
   try {
     const avaliacoes = await Avaliacao.find();
     if (avaliacoes.length === 0) {
-      return res.status(404).send('Não há avaliações para calcular a média');
+      const media = 0;
+      return res.status(200).json({media});
     }
     
     // Calcular a média das notas das avaliações

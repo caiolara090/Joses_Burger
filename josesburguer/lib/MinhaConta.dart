@@ -50,7 +50,13 @@ class _PaginaDadosState extends State<PaginaDados> {
           numero = data['numero'];
           bairro = data['bairro'];
           complemento = data['complemento'];
+          if (complemento.length <= 1){
+            complemento = "-";
+          }
           ponto_referencia = data['ponto_ref'];
+          if (ponto_referencia.length <= 1){
+            ponto_referencia = "-";
+          }
           isLoading = false; // Define isLoading como false quando os dados são carregados com sucesso
         });
       } else {
