@@ -64,20 +64,20 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/1.png
-    - assets/hamburger.png
-    - assets/fritas_1.png
-    - assets/image_1.png
-    - assets/image_2.png
-    - assets/image_3.png
-    - assets/image_4.png
-    - assets/image_5.png
-    - assets/image_6.png
-    - assets/image_7.png
-    - assets/image_8.png
-    - assets/image_9.png
-    - assets/image_0.png
-    - assets/loading.png
+    - assets/B_bacon.png
+    - assets/B_normal.png
+    - assets/H_2_B.png
+    - assets/H_B_bacon.png
+    - assets/H_chicken.png
+    - assets/H_fish.png
+    - assets/H_normal.png
+    - assets/H_pork.png
+    - assets/H_vegan.png
+    - assets/H_X_bacon.png
+    - assets/Pepsi.png
+    - assets/Coca.png
+    - assets/Guarana.png
+    - assets/S_caesar.png
+    - assets/S_normal.png
     - assets/JBlogo.png
-
-
+    - assets/JB_font.png

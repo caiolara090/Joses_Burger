@@ -26,68 +26,103 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
       descricao:
           "Frango grelhado com alface, tomate e maionese em um pão integral.",
       preco: 12.99,
-      foto: "assets/hamburger.png"
+      foto: "assets/H_normal.png"
     ),
     Produto(
       nome: "Sanduíche Vegetariano",
       descricao: "Pepino, cenoura, alface, tomate e queijo em um pão de grãos.",
       preco: 9.99,
-      foto: "assets/loading.png"
+      foto: "assets/H_B_bacon.png"
     ),
     Produto(
       nome: "Hambúrguer Clássico",
       descricao:
           "Hambúrguer de carne, queijo, alface, tomate e molho especial em um pão de hambúrguer.",
       preco: 8.49,
-      foto: "assets/loading.png"
+      foto: "assets/H_X_bacon.png"
     ),
     Produto(
       nome: "Wrap de Salada Caesar",
       descricao:
           "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
       preco: 10.99,
-      foto: "assets/loading.png"
+      foto: "assets/H_pork.png"
+    ),
+    Produto(
+      nome: "Wrap de Salada Caesar",
+      descricao:
+          "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
+      preco: 10.99,
+      foto: "assets/H_2_B.png"
     ),
     Produto(
       nome: "Sanduíche de Atum",
       descricao:
           "Atum, alface, cebola, picles e maionese em um pão de centeio.",
       preco: 11.49,
-      foto: "assets/loading.png"
+      foto: "assets/H_chicken.png"
     ),
     Produto(
       nome: "Sanduíche de Frango Grelhado",
       descricao:
           "Frango grelhado com alface, tomate e maionese em um pão integral.",
       preco: 12.99,
-      foto: "assets/loading.png"
+      foto: "assets/H_fish.png"
     ),
     Produto(
       nome: "Sanduíche Vegetariano",
       descricao: "Pepino, cenoura, alface, tomate e queijo em um pão de grãos.",
       preco: 9.99,
-      foto: "assets/loading.png"
+      foto: "assets/H_vegan.png"
     ),
     Produto(
       nome: "Hambúrguer Clássico",
       descricao:
           "Hambúrguer de carne, queijo, alface, tomate e molho especial em um pão de hambúrguer.",
       preco: 8.49,
-      foto: "assets/loading.png"
+      foto: "assets/B_normal.png"
     ),
     Produto(
       nome: "Wrap de Salada Caesar",
       descricao:
           "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
       preco: 10.99,
-      foto: "assets/loading.png"
+      foto: "assets/B_bacon.png"
     ),
     Produto(
       nome: "Sanduíche de Atum",
       descricao:
           "Atum, alface, cebola, picles e maionese em um pão de centeio.",
       preco: 11.49,
-      foto: "assets/loading.png"
+      foto: "assets/S_caesar.png"
+    ),
+    Produto(
+      nome: "Sanduíche de Frango Grelhado",
+      descricao:
+          "Frango grelhado com alface, tomate e maionese em um pão integral.",
+      preco: 12.99,
+      foto: "assets/S_normal.png"
+    ),
+    Produto(
+      nome: "Sanduíche de Frango Grelhado",
+      descricao:
+          "Frango grelhado com alface, tomate e maionese em um pão integral.",
+      preco: 12.99,
+      foto: "assets/Coca.png"
+    ),
+    Produto(
+      nome: "Sanduíche de Frango Grelhado",
+      descricao:
+          "Frango grelhado com alface, tomate e maionese em um pão integral.",
+      preco: 12.99,
+      foto: "assets/Pespi.png"
+    ),
+    Produto(
+      nome: "Sanduíche de Frango Grelhado",
+      descricao:
+          "Frango grelhado com alface, tomate e maionese em um pão integral.",
+      preco: 12.99,
+      foto: "assets/Guarana.png"
     ),
   ];
 
