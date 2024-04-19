@@ -74,3 +74,16 @@ Tarefas e responsáveis:
 - Implementar o botão de avaliações, que direciona-rá o usuário para a página de avaliações [José]
 - Implementar as caixas de texto para avaliações com nome do usuário e data da avaliação [José]
 - Implementar a lógica no backend para guardar no banco de dados as avaliações [José]
+
+
+```mermaid
+classDiagram
+    Class01 <|-- Class02
+    Class03 *-- Class04
+    Class05 o-- Class06
+    Class07 .. Class08
+    Class09 --> Class10: Aggregation
+    Class11 --* Class12: Composition
+    Class13 --|> Class14: Inheritance
+    Class15 --> Class16: Dependency
+```
