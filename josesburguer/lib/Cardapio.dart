@@ -122,7 +122,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
       descricao:
           "Frango grelhado com alface, tomate e maionese em um pão integral.",
       preco: 12.99,
-      foto: "assets/Pespi.png"
+      foto: "assets/Pepsi.png"
     ),
     Produto(
       nome: "Sanduíche de Frango Grelhado",
@@ -149,7 +149,7 @@ return Scaffold(
     preferredSize: Size.fromHeight(60), 
     child: AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+      backgroundColor: const Color.fromARGB(255, 244, 67, 54),
       title: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -170,7 +170,7 @@ return Scaffold(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 222, 222, 222)],
+            colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 255, 255, 255)],
           ),
         ),
         child: Column(
@@ -297,7 +297,7 @@ return Scaffold(
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 244, 67, 54),
         selectedItemColor: Color.fromARGB(255, 0, 0, 0),
         currentIndex: _currentIndex,
         unselectedItemColor: Colors.white,

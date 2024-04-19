@@ -96,7 +96,7 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
             widget.produto?.descricao ?? '', // Verifica se a descrição é nula
             textAlign: TextAlign.justify,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ), 
@@ -158,7 +158,7 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
             },
             
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+              backgroundColor: const Color.fromARGB(255, 244, 67, 54),
               padding: const EdgeInsets.symmetric(
                 vertical: 10.0,
                 horizontal: 50,

@@ -69,7 +69,7 @@ class _PaginaDadosState extends State<PaginaDados> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 244, 67, 54),
         title: const Center(
           child: Text(
             'Informações da Conta',
@@ -83,7 +83,7 @@ class _PaginaDadosState extends State<PaginaDados> {
       ),
       body: isLoading ? _buildLoadingIndicator() : _buildUserData(), // Exibe a animação de carregamento se isLoading for true, senão exibe os dados do usuário
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 244, 67, 54),
         selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
         currentIndex: 2,
         unselectedItemColor: Colors.white,
@@ -142,7 +142,7 @@ class _PaginaDadosState extends State<PaginaDados> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 222, 222, 222)],
+                colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 255, 255, 255)],
               ),
             ),
             child: SingleChildScrollView(
@@ -180,7 +180,7 @@ class _PaginaDadosState extends State<PaginaDados> {
           labelText: label,
           labelStyle: const TextStyle(
             fontSize: 25,
-            color: Color.fromARGB(255, 255, 0, 0),
+            color: Color.fromARGB(255, 244, 67, 54),
           ),
           prefixText: ' ',
         ).applyDefaults(Theme.of(context).inputDecorationTheme),

@@ -126,7 +126,10 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
         backgroundColor: Colors.red,
         title: const Text(
           'Avaliações',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 25),
         ),
         centerTitle: true,
       ),
@@ -139,11 +142,11 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  notaMedia != null ? 'Nota média: ${notaMedia!.toStringAsFixed(1)}' : 'Nota média: -',
+                  notaMedia != null ? 'Nota Média: ${notaMedia!.toStringAsFixed(1)}' : 'Nota Média: -',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 15.0,
+                    fontSize: 18.0,
                   ),
                 ),
                 Icon(
@@ -190,6 +193,7 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                                         Text(
                                           '${avaliacao.nome} ',
                                           style: const TextStyle(
+                                            fontSize: 20.0,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,
                                           ),
@@ -221,7 +225,10 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                             const SizedBox(height: 8.0),
                             Text(
                               '${avaliacao.comentario}',
-                              style: const TextStyle(color: Colors.black),
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 18.0
+                                ),
                             ),
                             const SizedBox(height: 8.0),
                             Text(

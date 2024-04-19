@@ -31,9 +31,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         centerTitle: true,
         title: const Text(
           'Cadastro',
-          style: TextStyle(fontSize: 28.0, color: Colors.white)
+          style: TextStyle(fontSize: 28.0, color: Colors.white, fontWeight: FontWeight.bold,)
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0).withOpacity(0.8),
+        backgroundColor: const Color.fromARGB(255, 244, 67, 54),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -48,7 +48,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       end: Alignment.bottomCenter,
       colors: [
         Color.fromARGB(255, 255, 255, 255),
-        Color.fromARGB(255, 222, 222, 222)
+        Color.fromARGB(255, 255, 255, 255)
       ],
     ),
   ),
@@ -175,7 +175,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ElevatedButton(
               onPressed: _register,
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+                backgroundColor: const Color.fromARGB(255, 244, 67, 54),
                 padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50),
               ),
               child: const Text(

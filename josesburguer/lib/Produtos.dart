@@ -36,7 +36,7 @@ Widget build(BuildContext context) {
       title: const Text(
         'Carrinho',
         style: TextStyle(
-          color: Color.fromARGB(255, 0, 0, 0),
+          color: Color.fromARGB(255, 255, 255, 255),
           fontSize: 28,
           fontWeight: FontWeight.bold,
         ),
@@ -112,7 +112,7 @@ Widget build(BuildContext context) {
   },
 ),
     bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 244, 67, 54),
         selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
         currentIndex: _currentIndex,
         unselectedItemColor: Colors.white,

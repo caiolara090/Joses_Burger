@@ -28,9 +28,9 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: true,
         title: const Text(
           'Jose\'s Burguer',
-          style: TextStyle(fontSize: 28.0, color: Color.fromARGB(255, 255, 255, 255)),
+          style: TextStyle(fontSize: 28.0, color: Color.fromARGB(255, 255, 255, 255), fontWeight: FontWeight.bold,),
         ),
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 244, 67, 54),
       ),
       body: Stack(
         children: [
@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 222, 222, 222)],
+                colors: [Color.fromARGB(255, 255, 255, 255), Color.fromARGB(255, 255, 255, 255)],
               ),
             ),
             padding: const EdgeInsets.all(30.0),
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50),
-                      backgroundColor: const Color.fromARGB(255, 255, 0, 0), // Cor do botão
+                      backgroundColor: const Color.fromARGB(255, 244, 67, 54), // Cor do botão
                       elevation: 5, // Elevação para criar um efeito de brilho
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: const BorderSide(color: Color.fromARGB(255, 248, 68, 55), width: 2.0),
+          borderSide: const BorderSide(color: Color.fromARGB(255, 244, 67, 54), width: 2.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
