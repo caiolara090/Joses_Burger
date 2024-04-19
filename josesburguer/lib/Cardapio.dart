@@ -121,7 +121,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                 ), 
               ),
               Image.asset(
-                'assets/1.png', 
+                'assets/JBlogo.png', 
                 width: 70, 
                 height: 75, 
               ),
@@ -221,55 +221,44 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                               ),
                             );
                           },
-                          child: Column(
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  _filteredProdutos[index].nome,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  _filteredProdutos[index].descricao.length >
-                                          50 
-                                      ? _filteredProdutos[index]
-                                              .descricao
-                                              .substring(0, 50) +
-                                          '...' 
-                                      : _filteredProdutos[index]
-                                          .descricao, 
-                                  style: TextStyle(color: Colors.black),
-                                ),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Image.asset(
-                                      _filteredProdutos[index].foto,
-                                      //'assets/image_$index.png',
-                                      height: 80,
-                                      width: 70,
-                                      fit: BoxFit.fill,
-                                    ),
-                                    SizedBox(width: 8),
-                                    Text(
-                                      'R\$${_filteredProdutos[index].preco.toStringAsFixed(2)}',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Divider(
-                                height: 1,
-                                color: Colors.grey,
-                              ),
-                            ],
-                          ),
+child: Column(
+  children: [
+    ListTile(
+      title: Text(
+        _filteredProdutos[index].nome,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+      ),
+      subtitle: Text(
+        _filteredProdutos[index].descricao.length > 50
+            ? _filteredProdutos[index].descricao.substring(0, 50) + '...'
+            : _filteredProdutos[index].descricao,
+        style: TextStyle(color: Colors.black),
+      ),
+      trailing: Text(
+        'R\$${_filteredProdutos[index].preco.toStringAsFixed(2)}',
+        style: TextStyle(
+          fontSize: 15,
+          color: Colors.black,
+        ),
+      ),
+      leading: Image.asset(
+        _filteredProdutos[index].foto,
+        height: 80,
+        width: 70,
+        fit: BoxFit.cover,
+      ),
+    ),
+    Divider(
+      height: 1,
+      color: Colors.grey,
+    ),
+  ],
+),
+
                         );
                       },
                     ),

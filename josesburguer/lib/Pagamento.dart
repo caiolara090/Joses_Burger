@@ -32,7 +32,7 @@ class _PagamentoPageState extends State<PagamentoPage> {
             const SizedBox(height: 20),
             Container(
               child: QrImageView(
-                data: 'https://random.cat/',
+                data: 'https://www.nyan.cat/index.php?cat=original/',
                 version: QrVersions.auto,
                 size: 200.0,
               ),
