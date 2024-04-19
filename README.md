@@ -77,13 +77,10 @@ Tarefas e responsáveis:
 
 
 ```mermaid
-classDiagram
-    Class01 <|-- Class02
-    Class03 *-- Class04
-    Class05 o-- Class06
-    Class07 .. Class08
-    Class09 --> Class10: Aggregation
-    Class11 --* Class12: Composition
-    Class13 --|> Class14: Inheritance
-    Class15 --> Class16: Dependency
+graph TD
+    Start --> A(Faz uma escolha)
+    A -->|Escolha 1| B(Faça a ação 1)
+    A -->|Escolha 2| C(Faça a ação 2)
+    B --> D(Fim)
+    C --> D
 ```
