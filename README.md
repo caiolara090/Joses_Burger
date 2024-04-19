@@ -74,3 +74,13 @@ Tarefas e responsáveis:
 - Implementar o botão de avaliações, que direciona-rá o usuário para a página de avaliações [José]
 - Implementar as caixas de texto para avaliações com nome do usuário e data da avaliação [José]
 - Implementar a lógica no backend para guardar no banco de dados as avaliações [José]
+
+
+```mermaid
+graph TD
+    Start --> A(Faz uma escolha)
+    A -->|Escolha 1| B(Faça a ação 1)
+    A -->|Escolha 2| C(Faça a ação 2)
+    B --> D(Fim)
+    C --> D
+```
