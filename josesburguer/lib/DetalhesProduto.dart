@@ -70,7 +70,7 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
-                  'assets/image_0.png',
+                  widget.produto.foto,
                   fit: BoxFit.cover,
                 ),
                 SizedBox(height: 20),
@@ -142,8 +142,21 @@ class _DetalhesPaginaState extends State<DetalhesPagina> {
                     imagem: widget.produto.foto,
                   ));
                 }
-              }
+                // Exibir um pop-up discreto dizendo "Nome do Produto adicionado ao carrinho"
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(
+        '${widget.produto.nome} adicionado ao carrinho',
+        style: TextStyle(color: Colors.white), // Define a cor do texto
+      ),
+      duration: Duration(seconds: 2), // Define a duração do pop-up
+      behavior: SnackBarBehavior.fixed, // Define a animação como flutuante
+      backgroundColor: Colors.red, // Define a cor de fundo vermelho claro
+    ),
+  );
+};
             },
+            
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 255, 0, 0),
               padding: const EdgeInsets.symmetric(

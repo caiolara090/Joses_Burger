@@ -26,7 +26,7 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
       descricao:
           "Frango grelhado com alface, tomate e maionese em um pão integral.",
       preco: 12.99,
-      foto: "assets/loading.png"
+      foto: "assets/hamburger.png"
     ),
     Produto(
       nome: "Sanduíche Vegetariano",
@@ -247,7 +247,8 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Image.asset(
-                                      'assets/image_$index.png',
+                                      _filteredProdutos[index].foto,
+                                      //'assets/image_$index.png',
                                       height: 80,
                                       width: 70,
                                       fit: BoxFit.fill,

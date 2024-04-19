@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/services.dart';
 import 'dart:convert';
 
 class Avaliacao {
@@ -286,53 +287,41 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                                         });
 
                                         if (response.statusCode == 201) {
+
+                                          _avaliacaoController.clear(); // Limpa o campo de texto
+
+                                          // Ocultar o teclado
+                                          FocusScope.of(context).unfocus();
+
                                           // Atualizar a lista de avaliações local com a nova avaliação
                                           setState(() {
                                             isLoading = true; // Mostrar indicador de carregamento
                                           });
                                           // Atualizar a lista de avaliações chamando fetchAvaliacoes()
                                           await fetchAvaliacoes();
+                                          await fetchNotaMedia();
 
                                           setState(() {
                                             isLoading = false; // Esconder indicador de carregamento após a atualização
                                           });
 
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                title: Text('Sucesso'),
-                                                content: Text(
-                                                    'Avaliação inserida com sucesso!'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      Navigator.of(context).pop();
-                                                    },
-                                                    child: Text('OK'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                          SnackBar(
+                                            content: Text('Avaliação inserida com sucesso!'),
+                                            duration: Duration(seconds: 1), // Define a duração do SnackBar
+                                            behavior: SnackBarBehavior.fixed, // Define a animação como flutuante
+                                            backgroundColor: Colors.red,
+                                          ),
+                                        );
+                                         Navigator.of(context).pop();
                                         } else {
-                                          showDialog(
-                                            context: context,
-                                            builder: (context) {
-                                              return AlertDialog(
-                                                title: Text('Erro'),
-                                                content: Text(
-                                                    'Falha ao inserir a avaliação. Tente novamente mais tarde.'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      Navigator.of(context).pop();
-                                                    },
-                                                    child: Text('OK'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(
+                                              content: Text('Falha ao inserir a avaliação. Tente novamente mais tarde.'),
+                                              duration: Duration(seconds: 1), // Define a duração do SnackBar
+                                              behavior: SnackBarBehavior.fixed, // Define a animação como flutuante
+                                              backgroundColor: Colors.red,
+                                            ),
                                           );
                                         }
                                       } catch (error) {
@@ -344,6 +333,7 @@ class _AvaliacaoPageState extends State<AvaliacaoPage> {
                                     child: Text('Enviar'),
                                     style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all<Color>(Colors.red), // Define a cor de fundo como vermelho
+                                    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                                     ),
                                   ),
                                 ],
