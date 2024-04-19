@@ -111,32 +111,10 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
           title: Row(
   mainAxisAlignment: MainAxisAlignment.spaceBetween,
   children: [
-    Expanded(
-      child: Text(
-        "Jose's",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ), 
-      ),
-    ),
     Image.asset(
       'assets/JB_font.png', 
       width: 70, 
       height: 75, 
-    ),
-    Expanded(
-      child: Text(
-        'Burguer',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ), 
-      ),
     ),
   ],
 ),
