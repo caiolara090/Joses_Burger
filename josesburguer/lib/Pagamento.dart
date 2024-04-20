@@ -15,7 +15,15 @@ class _PagamentoPageState extends State<PagamentoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pagamento via PIX'),
+        title: const Text(
+                "   Pagamento via PIX",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
         backgroundColor: Colors.red,
       ),
       body: Center(
