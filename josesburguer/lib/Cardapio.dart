@@ -22,113 +22,141 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
 
   List<Produto> produtos = [
     Produto(
-      nome: "Sanduíche de Frango Grelhado",
+      nome: "Professor X",
       descricao:
-          "Frango grelhado com alface, tomate e maionese em um pão integral.",
-      preco: 12.99,
-      foto: "assets/H_normal.png"
-    ),
-    Produto(
-      nome: "BIG X!!",
-      descricao:
-          "Frango grelhado com alface, tomate e maionese em um pão integral.",
-      preco: 12.99,
+        """Pão brioche, molho de tomate, hambúrguer de carne bovina 160g coberto com os queijos muçarela, provolone, catupiry e gorgonzola.
+        
+        Assim como o Professor X lidera os X-Men com sua mente poderosa, este hamburguer lidera o seu paladar em uma aventura épica. Prepare-se para uma explosão de sabores que transcende os limites da imaginação e experimente o hamburguer Professor X, um tributo delicioso a um dos maiores heróis dos quadrinhos.""",
+      preco: 24.90,
       foto: "assets/H_X.png"
     ),
     Produto(
-      nome: "Sanduíche Vegetariano",
-      descricao: "Pepino, cenoura, alface, tomate e queijo em um pão de grãos.",
-      preco: 9.99,
+      nome: "Wolverine",
+      descricao: 
+        """Pão americano com gergelim, hambúrguer de carne bovina 160g, bacon, picles e molho barbecue da casa.
+
+        Prepare-se para uma experiência gastronômica que vai despertar seus instintos mais selvagens e deixar um rastro de satisfação em seu paladar.""",
+      preco: 21.90,
       foto: "assets/H_B_bacon.png"
     ),
     Produto(
-      nome: "Hambúrguer Clássico",
+      nome: "Tempestade",
       descricao:
-          "Hambúrguer de carne, queijo, alface, tomate e molho especial em um pão de hambúrguer.",
-      preco: 8.49,
-      foto: "assets/H_X_bacon.png"
-    ),
-    Produto(
-      nome: "Wrap de Salada Caesar",
-      descricao:
-          "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
-      preco: 10.99,
+          """Pão brioche com gergelim, 140g de costelinha de porco desfiada, muçarela ralada, cebola roxa e molho barbecue da casa.
+          
+          Venha experimentar essa explosão de sabores, capaz de alterar o clima, deixando tudo mais feliz.""",
+      preco: 21.90,
       foto: "assets/H_pork.png"
     ),
     Produto(
-      nome: "Wrap de Salada Caesar",
+      nome: "Ciclope",
       descricao:
-          "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
-      preco: 10.99,
+          """Pão americano com gergelim, hambúrguer de carne bovina 120g, queijo cheddar, alface, tomate, ketchup e mostarda.
+
+          Feche os olhos, dê uma mordida e deixe-se levar pela experiência única do hamburguer Ciclope.""",
+      preco: 15.90,
+      foto: "assets/H_normal.png"
+    ),
+    Produto(
+      nome: "Spyke",
+      descricao:
+          """Pão americano com gergelim, hambúrguer de carne bovina 160g, bacon, picles, queijo cheddar, alface e ketchup.
+          
+          Assim como o Spyke usa seus espinhos para explorar novos caminhos, este hamburguer convida você a explorar novas combinações de sabores e descobrir uma nova dimensão de prazer gastronômico.""",
+      preco: 19.90,
+      foto: "assets/H_X_bacon.png"
+    ),
+    Produto(
+      nome: "Fera",
+      descricao:
+          """Pão americano com gergelim, dois hambúrgueres de carne bovina 120g cada, queijo cheddar, alface, tomate e ketchup.
+          
+          Este hamburguer é para aqueles com uma fome voraz, uma verdadeira besta faminta prestes a atacar sua refeição como o Fera ataca seus desafios intelectuais""",
+      preco: 19.90,
       foto: "assets/H_2_B.png"
     ),
     Produto(
-      nome: "Sanduíche de Atum",
+      nome: "Vampira",
       descricao:
-          "Atum, alface, cebola, picles e maionese em um pão de centeio.",
-      preco: 11.49,
+          """Pão americano com gergelim, 140g de peito de frango empanado, queijo cheddar, alface, tomate, cebola e ketchup.
+          
+          Este hamburguer vai sugar sua fome com a voracidade da Vampira, deixando você saciado e energizado para enfrentar qualquer desafio.""",
+      preco: 15.90,
       foto: "assets/H_chicken.png"
     ),
     Produto(
-      nome: "Sanduíche de Frango Grelhado",
+      nome: "Lince Negra",
       descricao:
-          "Frango grelhado com alface, tomate e maionese em um pão integral.",
-      preco: 12.99,
+          """Pão americano com gergelim, 140g de filé de tilápia empanado, alface, cebola roxa e molho tártaro da casa.
+
+          Experimente este hamburguer com a leveza e a suavidade da intangibilidade da Lince Negra, onde os sabores dançam em sua boca, como se fossem feitos de pura energia.""",
+      preco: 15.90,
       foto: "assets/H_fish.png"
     ),
     Produto(
-      nome: "Sanduíche Vegetariano",
-      descricao: "Pepino, cenoura, alface, tomate e queijo em um pão de grãos.",
-      preco: 9.99,
+      nome: "Noturno",
+      descricao: 
+        """Pão vegano com gergelim, hambúrguer de soja 140g, tofu, alface, cebola roxa, pepino e ketchup.
+      
+        Com uma combinação única de ingredientes veganos, este prato celebra a versatilidade e a ousadia, assim como o próprio herói, proporcionando uma experiência culinária que vai teleportar seu paladar para novas dimensões de sabor e textura.""",
+      preco: 15.90,
       foto: "assets/H_vegan.png"
     ),
     Produto(
-      nome: "Hambúrguer Clássico",
+      nome: "Batatas Jean Grey",
       descricao:
-          "Hambúrguer de carne, queijo, alface, tomate e molho especial em um pão de hambúrguer.",
-      preco: 8.49,
+          """Batatas fritas em óleo vegetal
+          
+          Estas fritas parecem ter lido sua mente, assim como Jean Grey dos X-Men, entregando exatamente o que você deseja: uma combinação perfeita de crocância e sabor.""",
+      preco: 6.50,
       foto: "assets/B_normal.png"
     ),
     Produto(
-      nome: "Wrap de Salada Caesar",
+      nome: "Batatas Fenix Negra",
       descricao:
-          "Frango grelhado, alface romana, queijo parmesão e molho Caesar em uma tortilha de trigo integral.",
-      preco: 10.99,
+          """Batatas fritas, queijo cheddar e bacon.
+          
+          Estas batatas fritas com bacon e queijo capturam a intensidade cósmica da Fênix Negra, oferecendo uma explosão de sabores que vai incendiar seu paladar.""",
+      preco: 10.50,
       foto: "assets/B_bacon.png"
     ),
     Produto(
-      nome: "Sanduíche de Atum",
+      nome: "Salada Magneto",
       descricao:
-          "Atum, alface, cebola, picles e maionese em um pão de centeio.",
-      preco: 11.49,
+          """Alface romana, queijo muçarela ralado, croutons, peito de frango fatiado e molho especial da casa.
+
+          Trata-se de uma salada Caesar que cria uma experiência gastronômica que atrai e encanta os sentidos.""",
+      preco: 19.90,
       foto: "assets/S_caesar.png"
     ),
     Produto(
-      nome: "Sanduíche de Frango Grelhado",
+      nome: "Salada Polaris",
       descricao:
-          "Frango grelhado com alface, tomate e maionese em um pão integral.",
-      preco: 12.99,
+          """Alface romana, tomate, cebola roxa e azeitona preta.
+          
+          É uma variedade de ingredientes vibrantes e frescos que se entrelaçam como os poderosos campos magnéticos que a Polaris controla.""",
+      preco: 12.90,
       foto: "assets/S_normal.png"
     ),
     Produto(
-      nome: "Sanduíche de Frango Grelhado",
+      nome: "Coca-cola",
       descricao:
-          "Frango grelhado com alface, tomate e maionese em um pão integral.",
-      preco: 12.99,
+          "Lata de Coca-cola de 350mL.",
+      preco: 6.50,
       foto: "assets/Coca.png"
     ),
     Produto(
-      nome: "Sanduíche de Frango Grelhado",
+      nome: "Pepsi 350mL",
       descricao:
-          "Frango grelhado com alface, tomate e maionese em um pão integral.",
-      preco: 12.99,
+          "Lata de Pepsi de 350mL.",
+      preco: 6.50,
       foto: "assets/Pepsi.png"
     ),
     Produto(
-      nome: "Sanduíche de Frango Grelhado",
+      nome: "Guaraná Antártica 350mL",
       descricao:
-          "Frango grelhado com alface, tomate e maionese em um pão integral.",
-      preco: 12.99,
+          "Lata de Guaraná Antártica de 350mL.",
+      preco: 6.50,
       foto: "assets/Guarana.png"
     ),
   ];
