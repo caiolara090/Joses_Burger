@@ -27,91 +27,90 @@ class _CarrinhoPageState extends State<CarrinhoPage> {
     return total;
   }
 
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      automaticallyImplyLeading: false,
-      centerTitle: true,
-      title: const Text(
-        'Carrinho',
-        style: TextStyle(
-          color: Color.fromARGB(255, 255, 255, 255),
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        title: const Text(
+          'Carrinho',
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+          ),
         ),
+        backgroundColor: Colors.red,
       ),
-      backgroundColor: Colors.red,
-    ),
-    body: ListView.builder(
-  itemCount: widget.pedidos.length,
-  itemBuilder: (context, index) {
-    final pedido = widget.pedidos[index];
-    return Column(
-      children: [
-        ListTile(
-  leading: CircleAvatar(
-    backgroundImage: AssetImage(pedido.imagem),
-  ),
-  title: Text(
-    '${pedido.nome} (${pedido.quantidade}x)',
-    style: const TextStyle(
-      fontSize: 18,
-    ),
-  ),
-  subtitle: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(
-        'Total: R\$${(pedido.valor * pedido.quantidade).toStringAsFixed(2)}',
-        style: const TextStyle(
-          fontSize: 18,
-        ),
+      body: ListView.builder(
+        itemCount: widget.pedidos.length,
+        itemBuilder: (context, index) {
+          final pedido = widget.pedidos[index];
+          return Column(
+            children: [
+              ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage(pedido.imagem),
+                ),
+                title: Text(
+                  '${pedido.nome} (${pedido.quantidade}x)',
+                  style: const TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+                subtitle: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total: R\$${(pedido.valor * pedido.quantidade).toStringAsFixed(2)}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            setState(() {
+                              pedido.removerPedido();
+                            });
+                          },
+                          splashRadius: 24,
+                          splashColor: Colors.grey.withOpacity(0.5),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.add),
+                          onPressed: () {
+                            setState(() {
+                              pedido.adicionarPedido();
+                            });
+                          },
+                          splashRadius: 24,
+                          splashColor: Colors.grey.withOpacity(0.5),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.delete),
+                          onPressed: () {
+                            setState(() {
+                              widget.pedidos.removeAt(index);
+                            });
+                          },
+                          splashRadius: 24,
+                          splashColor: Colors.grey.withOpacity(0.5),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const Divider(), // Linha divisória entre os pedidos
+            ],
+          );
+        },
       ),
-      Row(
-        children: [
-          IconButton(
-            icon: const Icon(Icons.remove),
-            onPressed: () {
-              setState(() {
-                pedido.removerPedido();
-              });
-            },
-            splashRadius: 24,
-            splashColor: Colors.grey.withOpacity(0.5),
-          ),
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () {
-              setState(() {
-                pedido.adicionarPedido();
-              });
-            },
-            splashRadius: 24,
-            splashColor: Colors.grey.withOpacity(0.5),
-          ),
-          IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: () {
-              setState(() {
-                widget.pedidos.removeAt(index);
-              });
-            },
-            splashRadius: 24,
-            splashColor: Colors.grey.withOpacity(0.5),
-          ),
-        ],
-      ),
-    ],
-  ),
-),
-
-        const Divider(), // Linha divisória entre os pedidos
-      ],
-    );
-  },
-),
-    bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color.fromARGB(255, 244, 67, 54),
         selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
         currentIndex: _currentIndex,
@@ -222,10 +221,3 @@ Widget build(BuildContext context) {
     );
   }
 }
-
-// void main() {
-//   runApp(MaterialApp(
-//     debugShowCheckedModeBanner: false,
-//     home: CarrinhoPage(),
-//   ));
-// }
