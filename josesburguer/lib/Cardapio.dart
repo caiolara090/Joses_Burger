@@ -146,14 +146,14 @@ class _PaginaCardapioState extends State<PaginaCardapio> {
       foto: "assets/Coca.png"
     ),
     Produto(
-      nome: "Pepsi 350mL",
+      nome: "Pepsi",
       descricao:
           "Lata de Pepsi de 350mL.",
       preco: 6.50,
       foto: "assets/Pepsi.png"
     ),
     Produto(
-      nome: "Guaraná Antártica 350mL",
+      nome: "Guaraná Antártica",
       descricao:
           "Lata de Guaraná Antártica de 350mL.",
       preco: 6.50,
