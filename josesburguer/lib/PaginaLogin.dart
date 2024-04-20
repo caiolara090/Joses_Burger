@@ -106,20 +106,20 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-         Positioned(
-      bottom: 40.0, // Ajuste a posição vertical da imagem
-      left: 0,
-      right: 0,
-      child: Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height * 1.4, // Ajuste a altura da imagem conforme necessário
-          child: CircleAvatar(
-            radius: 80, // Ajuste o tamanho da imagem
-            child: Image.asset("assets/JBlogo.png", height: 200),
+          Positioned(
+            bottom: 40.0, // Ajuste a posição vertical da imagem
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Container(
+                height: MediaQuery.of(context).size.height * 1.4, // Ajuste a altura da imagem conforme necessário
+                child: CircleAvatar(
+                  radius: 80, // Ajuste o tamanho da imagem
+                  child: Image.asset("assets/JBlogo.png", height: 200),
+                ),
+              ),
+            ),
           ),
-        ),
-      ),
-    ),
         ],
       ),
     );
