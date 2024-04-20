@@ -9,11 +9,5 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: LoginScreen(),
-    // routes: {
-    //     '/cardapio':(context) => PaginaCardapio(),
-    //     '/dados':(context) => PaginaDados(),
-    //     '/carrinho':(context) => CarrinhoPage(),
-    //     '/avaliacao':(context) => AvaliacaoPage(),
-    //   },
   ));
 }
