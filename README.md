@@ -2,7 +2,7 @@
 
 Trabalho referente à disciplina Engenharia de Software da UFMG.
 
-![](josesburguer/assets/JBlogo.png)
+![](josesburguer/assets/JBlogo_NB.png)
 
 # Membros e Papéis:
 - Caio Lara (Fullstack)
