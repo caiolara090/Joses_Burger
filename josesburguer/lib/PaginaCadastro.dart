@@ -67,7 +67,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     controller: _nameController,
                     labelText: 'Nome do Usuário',
                     validator: (value) {
-                      return value!.isEmpty || !RegExp(r'^[a-zA-Z ]+$').hasMatch(value) ? 'Digite apenas letras' : null;
+                      return value!.isEmpty || !RegExp(r'^[a-zA-ZÀ-ú]+$').hasMatch(value) ? 'Digite apenas letras' : null;
                     },
                     icon: Icons.person,
                   ),
