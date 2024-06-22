@@ -1,4 +1,4 @@
-# Trabalho-de-Engenharia-de-Software
+# Jose's Burger (Trabalho-de-Engenharia-de-Software)
 
 Trabalho referente à disciplina Engenharia de Software da UFMG.
 
